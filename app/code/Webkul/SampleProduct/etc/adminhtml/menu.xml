@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_SampleProduct
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webkul_SampleProduct::sampleproduct" title="Sample Product" module="Webkul_SampleProduct" sortOrder="10" resource="Webkul_SampleProduct::sampleproduct" dependsOnConfig="sampleproducts/settings/enable"/>
+        <add id="Webkul_SampleProduct::config_sampleproduct" title="Configuration Settings" module="Webkul_SampleProduct" sortOrder="30" parent="Webkul_SampleProduct::sampleproduct" action="adminhtml/system_config/edit/section/sampleproducts" resource="Webkul_SampleProduct::config_sampleproduct"/>
+    </menu>
+</config>

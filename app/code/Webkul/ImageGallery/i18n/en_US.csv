@@ -1,0 +1,121 @@
+Back,Back
+Reset,Reset
+"Save Image","Save Image"
+"Manage Gallery","Manage Gallery"
+"Add New Gallery","Add New Gallery"
+"Save Gallery","Save Gallery"
+"Edit Gallery '%'","Edit Gallery '%'"
+"New Gallery","New Gallery"
+"Gallery Information","Gallery Information"
+"Gallery Title","Gallery Title"
+"Gallery Code","Gallery Code"
+Status,Status
+Enabled,Enabled
+Disabled,Disabled
+"Gallery Data","Gallery Data"
+Id,Id
+Thumbnail,Thumbnail
+Image,Image
+Title,Title
+Description,Description
+Gallery,Gallery
+"Gallery Images","Gallery Images"
+"Manage Group","Manage Group"
+"Add New Group","Add New Group"
+"Save Group","Save Group"
+"Edit Group '%'","Edit Group '%'"
+"New Group","New Group"
+"Groups Information","Groups Information"
+"Image Ids","Image Ids"
+"Group Information","Group Information"
+"Group Code","Group Code"
+"Group Data","Group Data"
+Groups,Groups
+Galleries,Galleries
+"Manage Images","Manage Images"
+"Add New Image","Add New Image"
+"Edit Image '%'","Edit Image '%'"
+"New Image","New Image"
+"Image Information","Image Information"
+"Images Title","Images Title"
+"Image Title","Image Title"
+"Image (jpg, jpqg, gif, png only)","Image (jpg, jpqg, gif, png only)"
+"Image Link","Image Link"
+"Sort Order","Sort Order"
+"Images Information","Images Information"
+"Gallery(s) deleted succesfully","Gallery(s) deleted succesfully"
+"Gallery(s) disabled succesfully","Gallery(s) disabled succesfully"
+"Gallery(s) enabled succesfully","Gallery(s) enabled succesfully"
+"Gallery saved succesfully","Gallery saved succesfully"
+"Something went wrong","Something went wrong"
+Group,Group
+"Manage Groups","Manage Groups"
+"Group(s) deleted succesfully","Group(s) deleted succesfully"
+"Group(s) disabled succesfully","Group(s) disabled succesfully"
+"Group(s) enabled succesfully","Group(s) enabled succesfully"
+"Group saved succesfully","Group saved succesfully"
+Images,Images
+"Image(s) deleted succesfully","Image(s) deleted succesfully"
+"Image(s) disabled succesfully","Image(s) disabled succesfully"
+"Image(s) enabled succesfully","Image(s) enabled succesfully"
+"Invalid image type","Invalid image type"
+"Image saved succesfully","Image saved succesfully"
+Dark,Dark
+Light,Light
+Top,Top
+Bottom,Bottom
+Float,Float
+Inside,Inside
+Outside,Outside
+Over,Over
+None,None
+Fade,Fade
+Elastic,Elastic
+"Very Small","Very Small"
+Small,Small
+Medium,Medium
+Large,Large
+"Very Large","Very Large"
+"Something went wrong while saving the file(s).","Something went wrong while saving the file(s)."
+"File can not be saved to the destination folder.","File can not be saved to the destination folder."
+Approved,Approved
+Disapproved,Disapproved
+Edit,Edit
+"Image type not allowed","Image type not allowed"
+"No Images in this gallery","No Images in this gallery"
+"Delete image","Delete image"
+"Image Gallery","Image Gallery"
+"Gallery Settings","Gallery Settings"
+"Image Gallery Information","Image Gallery Information"
+"User Guide","User Guide"
+"Store Extension","Store Extension"
+Ticket/Customisations,Ticket/Customisations
+Services,Services
+Reviews,Reviews
+Webkul,Webkul
+"Opening Effect","Opening Effect"
+"Closing Effect","Closing Effect"
+Caption,Caption
+"Caption Type","Caption Type"
+"'float' and 'over' works with position 'bottom'.","'float' and 'over' works with position 'bottom'."
+"Caption Position","Caption Position"
+Background,Background
+"Thumbnail Type","Thumbnail Type"
+Cyclic,Cyclic
+Autoplay,Autoplay
+Interval,Interval
+Mousewheel,Mousewheel
+Border,Border
+Slidecount,Slidecount
+Controls,Controls
+"Add Gallery","Add Gallery"
+Disable,Disable
+Enable,Enable
+Delete,Delete
+"Do you want to delete selected galleries?","Do you want to delete selected galleries?"
+"Thumbnail Image Id","Thumbnail Image Id"
+"Add Group","Add Group"
+"Do you want to delete selected groups?","Do you want to delete selected groups?"
+"Gallery Ids","Gallery Ids"
+"Add Image","Add Image"
+"Do you want to delete selected images?","Do you want to delete selected images?"

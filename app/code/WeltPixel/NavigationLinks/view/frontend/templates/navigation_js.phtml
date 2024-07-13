@@ -1,0 +1,32 @@
+<?php $_helper = $this->helper('WeltPixel\NavigationLinks\Helper\Data'); ?>
+<?php
+$megaMenuOverlayFocusEnabled = $_helper->getMegaMenuOverlayOption();
+$designSettingsEnabled = $_helper->isDesignSettingsEnabled();
+?>
+
+<?php if($megaMenuOverlayFocusEnabled && $designSettingsEnabled) ?>
+    <div class="overlay-focus-megamenu"></div>
+<?php ?>
+<script>
+    window.screenM = '<?php echo $_helper->getMobileThreshold() + 1 ; ?>';
+    window.widthThreshold = '<?php echo $_helper->getWidthThreshold() + 1; ?>';
+    window.designSettingsEnabled = '<?php echo $_helper->isDesignSettingsEnabled(); ?>';
+    window.menuFocusOverlay = '<?php echo $_helper->getMegaMenuOverlayOption(); ?>';
+
+    require(['jquery', 'navigationJs' ],
+        function   ($, navigationJs) {
+            $(document).ready(function() {
+                navigationJs.init();
+                $(window).on('resize', function() {
+                    navigationJs.init();
+                });
+
+                let navigation = $(".navigation");
+                let addmenurole = navigation.find("li");
+                for (let i = 0; i < addmenurole.length; i++) {
+                    $(addmenurole[i]).attr("role","none");
+                }
+                jQuery('.section-items.nav-sections-items').attr('role','none');
+            });
+        });
+</script>

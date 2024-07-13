@@ -1,0 +1,52 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<?php
+    $jsonConfig = $block->getGalleryJsonConfig();
+    $imagesCollecton = $block->getGalleryImages();
+?>
+<div class="wk_imagegallery_container">
+    <?php if ($imagesCollecton): ?>
+        <?php foreach ($imagesCollecton as $image): ?>
+            <?php
+                $title = $image->getTitle();
+                $imageName = $image->getImage();
+                $description = $image->getDescription();
+                $imageUrl = $block->getImageUrl($imageName);
+                $resizeUrl = $block->getResizedUrl($imageName);
+                $imagelink = $image->getImageLink();
+            ?>
+            <a href="<?= $escaper->escapeUrl($imageUrl); ?>" 
+            title="<?= $escaper->escapeHtml($description); ?>"
+             class="imagegallery fancybox"
+             data-fancybox-group="gallery"
+             data-link='<?= $escaper->escapeUrl($imagelink); ?>'>
+                <img src="<?= $escaper->escapeUrl($resizeUrl); ?>" 
+                class="wk_active wk_images wk_default" style="opacity:1;"/>
+            </a>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <?= /* @noEscape */ __('No Images in this gallery'); ?>
+    <?php endif; ?>
+</div>
+<script>
+    require(['jquery','Webkul_ImageGallery/js/gallery'], function ($) {
+        var jsonConfig = JSON.parse('<?= /* @noEscape */ $jsonConfig; ?>');
+        jsonConfig.afterLoad=function() {
+            if(jsonConfig['slidecount']) {
+                this.title = "Image "+(this.index+1)+" of "+this.group.length+(this.title ? " - "+this.title : "");
+                }
+                };
+        $(document).ready(function() {
+            $(".fancybox").fancybox(jsonConfig);
+        });
+    });
+</script>

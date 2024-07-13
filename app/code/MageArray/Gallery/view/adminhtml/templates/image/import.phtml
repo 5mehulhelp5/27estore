@@ -1,0 +1,97 @@
+<div class="notice" style="margin-bottom: 12px;">
+    <?= /* @noEscape */ __(
+        'Please Upload Gallery Images To This Directory :-"\pub\media\gallery"'
+    ); ?>
+</div>
+<form id="imageForm"
+      name="form"
+      action="<?= /* @noEscape */ $block->getUrl(
+          "gallery/Image/import/"
+      ); ?>"
+      method="post"
+      enctype="multipart/form-data"
+      data-hasrequired="<?= /* @noEscape */ __(
+          '* Required Fields'
+      ) ?>">
+    <input type="hidden"
+           name="form_key"
+           value="<?= /* @noEscape */ $block->getFormKey(); ?>"/>
+    <div class="actions-toolbar" style="float: left;">
+        <div class="primary">
+            <input type="file"
+                   class="upload"
+                   id="filename"
+                   name="uploadFile"
+                   accept=".csv">
+            <div class="button" style="float: right;">
+                <button type="submit"
+                        id="submitbutton"
+                        title="Import"
+                        class="action submit primary">
+                    <span><?= /* @noEscape */ __('Import') ?></span>
+                </button>
+            </div>
+            <div class="require" style="display: none;">
+                <span><?= /* @noEscape */ __(
+                    'Please Choose Your File.'
+                ) ?></span>
+            </div>
+            <div class="csv" style="display: none;">
+                <span><?= /* @noEscape */ __(
+                    'Please Choose Only CSV file.'
+                ) ?></span>
+            </div>
+        </div>
+        <div class="admin__field-control" style="margin-top: 10px;">
+            <a href="<?= /* @noEscape */ $block->getImageMediaUrl(); ?>"
+               target="_blank"><?= /* @noEscape */ __(
+                   'Sample File'
+               ); ?></a>
+        </div>
+    </div>
+</form>
+<script>
+    require(["jquery"], function ($) {
+        $('.notice').show();
+        $('.button #submitbutton').click(function () {
+            var file = $('input[type="file"]').val();
+            var exit = ['.csv'];
+            if (file == '') {
+                var get_ext = file.split('.');
+                get_ext = get_ext.reverse();
+                if ($.inArray(get_ext[0].toLowerCase(), exit) > -1) {
+                    alert('Allowed extension!');
+                } else {
+                    $(".require").css(
+                        {
+                            "display": "block",
+                            "color": "red",
+                            "margin-top": "10px"
+                        }
+                    ).show();
+                    return false;
+                }
+            }
+        })
+        $('.upload').click(function () {
+            $(".require").css("display", "none").hide();
+            $(".csv").css("display", "none").hide();
+            $(".button").css("display", "block").show();
+        })
+
+        $("#filename").change(function (e) {
+            var ext = $("input#filename").val().split(".").pop().toLowerCase();
+            if ($.inArray(ext, ["csv"]) == -1) {
+                $(".csv").css(
+                    {
+                        "display": "block",
+                        "color": "red",
+                        "margin-top": "10px"
+                    }
+                ).show();
+                $(".button").css("display", "none").hide();
+                return false;
+            }
+        })
+    })
+</script>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="wk_gallery_images" resource="default" engine="innodb" comment="ImageGallery Images Table">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+    <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image"/>
+    <column xsi:type="varchar" name="image_link" nullable="true" length="255" comment="Image link"/>
+    <column xsi:type="mediumtext" name="description" nullable="false" comment="Description"/>
+    <column xsi:type="int" name="status" padding="10" unsigned="true" nullable="false" identity="false" comment="Status"/>
+    <column xsi:type="datetime" name="created_time" on_update="false" nullable="true" comment="Create Time"/>
+    <column xsi:type="datetime" name="updated_time" on_update="false" nullable="true" comment="Update Time"/>
+    <column xsi:type="int" name="sort_order" padding="11" unsigned="false" nullable="false" identity="false" comment="Sort Order"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+  <table name="wk_gallery_gallery" resource="default" engine="innodb" comment="ImageGallery Gallery Table">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="varchar" name="gallery_code" nullable="false" length="255" comment="Gallery Code"/>
+    <column xsi:type="varchar" name="image_ids" nullable="false" length="255" comment="Image Ids"/>
+    <column xsi:type="int" name="thumbnail_show" padding="11" unsigned="false" nullable="false" identity="false" comment="Thumbnail Show"/>
+    <column xsi:type="int" name="status" padding="10" unsigned="true" nullable="false" identity="false" comment="Status"/>
+    <column xsi:type="datetime" name="created_time" on_update="false" nullable="true" comment="Create Time"/>
+    <column xsi:type="datetime" name="updated_time" on_update="false" nullable="true" comment="Update Time"/>
+    <column xsi:type="varchar" name="gallery_title" nullable="false" length="255" comment="Gallery Title"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+  <table name="wk_gallery_groups" resource="default" engine="innodb" comment="ImageGallery Group Table">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="varchar" name="group_code" nullable="false" length="255" comment="Group Code"/>
+    <column xsi:type="varchar" name="gallery_ids" nullable="false" length="255" comment="Image Ids"/>
+    <column xsi:type="int" name="status" padding="10" unsigned="true" nullable="false" identity="false" comment="Status"/>
+    <column xsi:type="datetime" name="created_time" on_update="false" nullable="true" comment="Create Time"/>
+    <column xsi:type="datetime" name="updated_time" on_update="false" nullable="true" comment="Update Time"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+</schema>

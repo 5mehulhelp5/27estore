@@ -1,0 +1,28 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 4.0.5 --------------------------------------
+    + Compatible with Magento 2.4.x
+    - Minor Bug Fixes
+
+-------------------------------- Version 4.0.4 --------------------------------------
+    + Compatible with Magento 2.4.x
+    - Minor Bug Fixes
+
+-------------------------------- Version 4.0.3 --------------------------------------
+    - Minor Bug Fixes
+
+-------------------------------- Version 4.0.2 --------------------------------------
+    - Minor Bug Fixes
+	+ Compatible with Magento 2.4.x
+
+-------------------------------- Version 4.0.1 --------------------------------------
+    - Fixed some issues
+
+-------------------------------- Version 4.0.0 --------------------------------------
+    + Compatible with Magento 2.4.x.
+	+ Allow admin to add sample per product.
+	+ Allow admin to add sample title, price, quantity.
+	+ Allow admin to global add max order quantity for sample product.

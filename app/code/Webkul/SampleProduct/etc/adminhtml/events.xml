@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_SampleProduct
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_catalog_product_save_entity_after">
+    	<observer name="sample_product_save_after" instance="Webkul\SampleProduct\Observer\CatalogProductSaveAfter"/>
+    </event>
+    <event name="admin_system_config_changed_section_sampleproduct">
+        <observer name="custom_admin_system_config_changed_section_sampleproduct" instance="Webkul\SampleProduct\Observer\DisableSampleProductConfig"/>
+    </event>
+</config>

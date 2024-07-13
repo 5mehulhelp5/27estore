@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="top.links">
+            <block class="MageArray\Gallery\Block\Links\Link" name="image-link" ifconfig="gallery/general/header_link"/>
+        </referenceBlock>
+        <referenceBlock name="footer_links">
+            <block class="MageArray\Gallery\Block\Links\Link" name="image-link-footer"
+                   ifconfig="gallery/general/footer_link"/>
+        </referenceBlock>
+    </body>
+</page>

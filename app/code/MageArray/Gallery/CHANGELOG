@@ -1,0 +1,32 @@
+MageArray_Gallery
+
+-------------
+  CHANGELOG
+-------------
+
+===== 1.0.0 =====
+ * Initial stable M2 release
+
+===== 1.0.1 =====
+ * Several code optimizations, code cleanup
+ 
+===== 1.0.2 ===== 
+ * Bug fixes
+ * Compability with Magento2.2
+ 
+===== 1.0.3 =====
+ * bug fixes 
+ * Firefox not working issue fixes
+ * Compability with Magento2.2.1
+ 
+===== 1.0.4 =====
+ * bug fixes
+ 
+===== 1.0.5 =====
+ * bug fixes 
+
+===== 1.0.6 =====
+ * Compatibility with Magento 2.3
+
+===== 1.0.7 =====
+ * Compatibility with Magento 2.3.3 && bug fixes

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$url = $block->getLogoUrl();
+if (!empty($url)) {
+   
+    $cssContent = '.admin__menu .item-imagegallery >a:before{content: "" !important;background:url("'.$url.'")'.
+        'no-repeat 50% 50%;opacity: 0.5;} .admin__menu .item-imagegallery:hover>a:before {opacity: 1;}'.
+        ' .admin__menu .item-imagegallery ._active>a:before {opacity: 1;}';
+    ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag('style', [], $cssContent, false); ?>
+    <?php
+}
+?>

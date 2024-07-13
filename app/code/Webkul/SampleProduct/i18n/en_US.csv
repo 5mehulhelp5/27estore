@@ -1,0 +1,56 @@
+label,label
+"Read error!","Read error!"
+Author,Author
+Webkul,Webkul
+Version,Version
+"User Guide","User Guide"
+"Click Here","Click Here"
+"Store Extension","Store Extension"
+Ticket/Customisations,Ticket/Customisations
+Services,Services
+Yes,Yes
+No,No
+"The sample product was unable to be saved. Please try again.","The sample product was unable to be saved. Please try again."
+"You saved the sample for this product.","You saved the sample for this product."
+"This Customer group is not allowed to buy this products","This Customer group is not allowed to buy this products"
+"The requested sku is not assigned to given stock","The requested sku is not assigned to given stock"
+"No quantity available for sample ""%1""","No quantity available for sample ""%1"""
+"The requested qty exceeds the maximum %1 qty allowed in shopping cart","The requested qty exceeds the maximum %1 qty allowed in shopping cart"
+"You have already purchased the allowed sample qty(s) for ""%1""","You have already purchased the allowed sample qty(s) for ""%1"""
+"Not applicable for this product type.","Not applicable for this product type."
+WEBSITE,WEBSITE
+"Sample Status","Sample Status"
+"Disable Sample","Disable Sample"
+"Enable Sample","Enable Sample"
+"store view","store view"
+"Sample Title","Sample Title"
+"Sample Product","Sample Product"
+GLOBAL,GLOBAL
+"Sample Price","Sample Price"
+"Salable Sample Qty","Salable Sample Qty"
+"Sample Qty","Sample Qty"
+"View Product","View Product"
+"We can't find products matching the selection.","We can't find products matching the selection."
+"Get a Free Sample","Get a Free Sample"
+"Get a Sample","Get a Sample"
+"Get a Sample for %1","Get a Sample for %1"
+"Add to Cart","Add to Cart"
+"In stock","In stock"
+"Out of stock","Out of stock"
+"Learn More","Learn More"
+Free,Free
+"Pay %1","Pay %1"
+"Get Sample","Get Sample"
+"Sample Product Configuration","Sample Product Configuration"
+"Sample Product System Settings","Sample Product System Settings"
+"Enable Sample Product","Enable Sample Product"
+"Allow to only login customer","Allow to only login customer"
+"Allowed Customer Groups","Allowed Customer Groups"
+"Maximum allowed sample quantities to order","Maximum allowed sample quantities to order"
+"If ""Allow to only login customer"" is ""yes"" then customer can only order ""Maximum allowed sample quantities"".","If ""Allow to only login customer"" is ""yes"" then customer can only order ""Maximum allowed sample quantities""."
+"Sample Product Information","Sample Product Information"
+Sample,Sample
+"IS Sample Available","IS Sample Available"
+Disable,Disable	
+Enable,Enable
+"Configuration Settings","Configuration Settings

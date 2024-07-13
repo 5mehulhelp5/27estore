@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageArray_Gallery::css/fancybox/font-awesome.css"/>
+        <css src="MageArray_Gallery::css/fancybox/jquery.fancybox.css"/>
+        <css src="MageArray_Gallery::css/fancybox/jquery.fancybox-buttons.css"/>
+        <css src="MageArray_Gallery::css/fancybox/custom.gallery.css"/>
+    </head>
+    <body>
+        <referenceContainer name="columns.top">
+            <block class="MageArray\Gallery\Block\Image\ImageDescription" ifconfig="gallery/general/enable"
+                   name="description" before="content" template="MageArray_Gallery::image/description.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="MageArray\Gallery\Block\Image\ImageList" ifconfig="gallery/general/enable" name="last"
+                   template="MageArray_Gallery::image/list.phtml">
+                <block class="MageArray\Gallery\Block\Image\ImageList" ifconfig="gallery/general/enable" name="image"
+                       template="MageArray_Gallery::image/image.phtml"/>
+            </block>
+            <!-- <block class="MageArray\Gallery\Block\Image\CategoryTree" ifconfig="gallery/general/enable" name="category"
+                   template="MageArray_Gallery::image/list.phtml"/> --> 
+			<!-- above commented code occurring issues in the gallery page -->
+        </referenceContainer>
+    </body>
+</page>
+

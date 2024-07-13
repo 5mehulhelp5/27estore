@@ -1,0 +1,43 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 5.0.0-p1 --------------------------------------
+
+	- Bugs fixed
+
+-------------------------------- Version 5.0.0 --------------------------------------
+
+	+ Compatible with Magento 2.4.x.
+
+-------------------------------- Version 2.3.0 --------------------------------------
+
+	+ Compatible with Magento 2.3.x.
+
+-------------------------------- Version 2.0.4 --------------------------------------
+
+	+ Updated composer.json as per magento 2.2.x version.	
+
+-------------------------------- Version 2.0.3 --------------------------------------
+
+	+ Trasnlation file added.
+
+
+-------------------------------- Version 2.0.2 --------------------------------------
+
+	+ Updated composer.json as per magento 2.1.x version.
+
+
+-------------------------------- Version 2.0.1 --------------------------------------
+    
+    + Functionality to display gallery by gallery code
+    + Functionality to display gallery on any cms page or static block
+
+
+-------------------------------- Version 2.0.0 --------------------------------------
+    
+    + Ability to add/manage images into various gallery.
+    + Allow to assign galleries into various groups.
+    + Allow to add various effects for display images.
+    + Awesome controls you can zoom images, change images using mouse enter etc.

@@ -1,0 +1,82 @@
+"Manage Categories","Manage Categories"
+"Add New Category","Add New Category"
+"Import Category","Import Category"
+"Save Category","Save Category"
+"Delete Category","Delete Category"
+"Save and Continue Edit","Save and Continue Edit"
+"General Information","General Information"
+Title,Title
+"URL Key","URL Key"
+Image,Image
+"Sort Order","Sort Order"
+"Image Information","Image Information"
+Visibility,Visibility
+Status,Status
+Store,Store
+"Category Information","Category Information"
+ID,ID
+Edit,Edit
+Delete,Delete
+"Are you sure?","Are you sure?"
+"Change Status","Change Status"
+"Manage Images","Manage Images"
+"Add New Image","Add New Image"
+"Import Image","Import Image"
+"Save Image","Save Image"
+"Delete Image","Delete Image"
+Description,Description
+Categories,Categories
+Gallery,Gallery
+"Category has been deleted.","Category has been deleted."
+"We can't find a Categories to delete.","We can't find a Categories to delete."
+"This Categories no longer exists.","This Categories no longer exists."
+"""We can't find required columns:"" .","""We can't find required columns:"" ."
+"Only JPG, JPEG,PNG and GIF files are allowed in "" . . "" Column","Only JPG, JPEG,PNG and GIF files are allowed in "" . . "" Column"
+"Please make sure Column: "" . . "" value is not empty","Please make sure Column: "" . . "" value is not empty"
+"Something went wrong while saving the entry.","Something went wrong while saving the entry."
+"Categories imported successfully.","Categories imported successfully."
+"Some Error occur in import , Please try again","Some Error occur in import , Please try again"
+Import,Import
+"Import Categories","Import Categories"
+Category,Category
+"Please select Categories.","Please select Categories."
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"A total of %1 record(s) have been updated.","A total of %1 record(s) have been updated."
+"Uploaded file is not a valid. Only JPG, JPEG,PNG and GIF files are allowed.","Uploaded file is not a valid. Only JPG, JPEG,PNG and GIF files are allowed."
+"The Category Image has been saved.","The Category Image has been saved."
+"Something went wrong while saving the Category Image.","Something went wrong while saving the Category Image."
+"Please Upload New Image File Before Delete Old Image.","Please Upload New Image File Before Delete Old Image."
+"Please Upload Image File.","Please Upload Image File."
+"Image has been deleted.","Image has been deleted."
+"We can't find a Image to delete.","We can't find a Image to delete."
+"This Image no longer exists.","This Image no longer exists."
+"Images imported successfully.","Images imported successfully."
+"Import Images","Import Images"
+"Please select Image(s).","Please select Image(s)."
+"The Image has been saved.","The Image has been saved."
+"Something went wrong while saving the Image.","Something went wrong while saving the Image."
+Enable,Enable
+Disable,Disable
+"Please Upload Gallery Images To This Directory :-""\pub\media\gallery""","Please Upload Gallery Images To This Directory :-""\pub\media\gallery"""
+"Please Choose Your File.","Please Choose Your File."
+"Please Choose Only CSV File.","Please Choose Only CSV File."
+"Sample File","Sample File"
+"* Required Fields","* Required Fields"
+"Please Choose Only CSV file.","Please Choose Only CSV file."
+"There is no Image Available","There is no Image Available"
+Back,Back
+All,All
+"MageArray Extension","MageArray Extension"
+"Image Gallery","Image Gallery"
+"General Settings","General Settings"
+Enabled,Enabled
+"Page Title","Page Title"
+"Page Description","Page Description"
+"Meta Title","Meta Title"
+"Meta Keywords","Meta Keywords"
+"Meta Description","Meta Description"
+"Display Mode","Display Mode"
+"Thumb Width","Thumb Width"
+"Thumb Height","Thumb Height"
+"Thumb Background Color","Thumb Background Color"
+"Space Between Images","Space Between Images"
