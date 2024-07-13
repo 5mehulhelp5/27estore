@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magearray" translate="label" sortOrder="400" class="magearray">
+            <label> MageArray Extension </label>
+        </tab>
+        <section id="gallery" translate="label" type="text" sortOrder="141" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Image Gallery</label>
+            <tab>magearray</tab>
+            <resource>MageArray_Gallery::config_gallery</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="header_link" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add link in Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Note: Header link visible in My account dropdown links after logged in to the account.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="footer_link" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add link in Footer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="page_url" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page URL</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="link_title" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Title</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Page Title</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="page_description" translate="label" type="textarea" sortOrder="7" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Page Description</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="meta_title" translate="label" type="textarea" sortOrder="8" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="meta_keywords" translate="label" type="textarea" sortOrder="9" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="meta_description" translate="label" type="textarea" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="display_mode" translate="label" type="select" sortOrder="11" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Mode</label>
+                    <source_model>MageArray\Gallery\Model\Config\Source\Mode</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="category_url_prefix" type="text" sortOrder="12" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Category url prefix</label>
+                    <depends>
+                        <field separator="," id="display_mode">multiple_page_with_category_text,multiple_page_with_category_Image</field>
+                        <field separator="," id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="category_url_suffix" type="text" sortOrder="13" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Category url suffix</label>
+                    <depends>
+                        <field separator="," id="display_mode">multiple_page_with_category_text,multiple_page_with_category_Image</field>
+                        <field separator="," id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="thumb_width" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Thumb Width</label>
+                    <validate>validate-number required-entry</validate>
+                    <comment><![CDATA[eg : 100 for 100px]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="thumb_height" translate="label" type="text" sortOrder="15" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Thumb Height</label>
+                    <validate>validate-number required-entry</validate>
+                    <comment><![CDATA[eg : 100 for 100px]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="aspect_ratio" type="select" sortOrder="16" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Keep Aspect Ratio of Thumb ?</label>
+                    <source_model>MageArray\Gallery\Model\Config\Source\Ratio</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="keep_frame" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame of Thumb ?</label>
+                    <source_model>MageArray\Gallery\Model\Config\Source\Ratio</source_model>
+                    <depends>
+                        <field id="aspect_ratio">1</field>
+                        <field separator="," id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="background_color" translate="label" type="text" sortOrder="18" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Thumb Background Color</label>
+                    <frontend_model>MageArray\Gallery\Block\Picker\Color</frontend_model>
+                    <comment><![CDATA[Thumb Background Color if Keep Frame of Thumb(Yes)]]></comment>
+                    <depends>
+                        <field id="keep_frame">1</field>
+                        <field id="aspect_ratio">1</field>
+                        <field separator="," id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="space_between_images" translate="label" type="text" sortOrder="19" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Space Between Images</label>
+                    <validate>validate-number required-entry</validate>
+                    <comment><![CDATA[eg : 5 for 5px]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

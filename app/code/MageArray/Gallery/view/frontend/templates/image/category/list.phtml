@@ -1,0 +1,112 @@
+<?php
+$media = $block->getMediaUrl();
+$categoryId = $block->getRequest()->getParam('cat');
+$categories = $block->getCategories();
+$images = $block->getImages($categoryId);
+$displayMode = $block->getDisplayMode();
+$pageUrl = $block->getPageUrl();
+$baseUrl = $block->getBaseUrl();
+$thumbHeight = $block->getThumbHeight();
+$thumbWidth = $block->getThumbWidth();
+$spaceImages = $block->getSpaceImages();
+$notFoundImage = $block->getNotFoundImage();
+?>
+<?php if ($categoryId) : ?>
+    <?php $category = $block->getGalleryCategories($categoryId); ?>
+    <h2 class="faqpage_category">
+        <div class="view-category">
+            <?= /* @noEscape */ $category->getTitle(); ?>
+        </div>
+    </h2>
+<?php endif; ?>
+<div id="wrap" class="cf">
+    <div class="galleryWrap cf" id="test">
+        <?php if (count($images->getData()) < 1) : ?>
+            <div class="categories-image-no">
+                <i class="fa fa-thumbs-o-down"></i>
+                <?= /* @noEscape */ __("There is no Image Available") ?>
+            </div>
+        <?php endif; ?>
+        <?php foreach ($images as $image) : ?>
+            <?php $imageUrl = $block->getImageUrl(
+                $image,
+                $thumbWidth,
+                $thumbHeight
+            ); ?>
+            <?php if (!empty($image->getImage())) : ?>
+                <a class="imgContainer fancybox"
+                   style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;"
+                   data-fancybox-group="gallery"
+                   href="<?= /* @noEscape */ $media . 'gallery/' . $image->getImage(); ?>">
+                    <div class="image">
+                        <img src="<?= /* @noEscape */ $imageUrl; ?>"
+                             alt=""
+                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                             title="<?= /* @noEscape */ $image->getTitle(); ?>"/>
+                    </div>
+                </a>
+                <div class="description" style="display: none;">
+                    <?= /* @noEscape */ $image->getMetaDescription(); ?>
+                </div>
+            <?php else : ?>
+                <a class="imgContainer fancybox"
+                   style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;"
+                   data-fancybox-group="gallery"
+                   href="<?= /* @noEscape */ $notFoundImage; ?>">
+                    <div class="image">
+                        <img src="<?= /* @noEscape */ $notFoundImage;?>"
+                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                             alt=""
+                             title="Not Found"/>
+                    </div>
+                </a>
+                <div class="description" style="display: none;">
+                    <?= /* @noEscape */ $image->getMetaDescription(); ?>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="back-button">
+    <div class="back-filter-item">
+        <a href="<?= /* @noEscape */ $baseUrl . $pageUrl ?>" class="back-filter">
+            <?= /* @noEscape */ __('Back'); ?>
+        </a>
+    </div>
+</div>
+<script>
+    require(['jquery', 'fancybox', 'fancyboxbuttons'], function ($) {
+        $(".fancybox").fancybox({
+            modal: true,
+            animated: 'fade',
+            helpers: {
+                buttons: {}
+            },
+            beforeLoad: function () {
+                this.title = $(this.element).next('.description').html();
+            }
+        });
+
+        $(".filter").on("click", function () {
+            var $this = $(this);
+            if (!$this.hasClass("active")) {
+                $(".filter").removeClass("active");
+                $this.addClass("active");
+                var $filter = $this.data("rel");
+                $filter == 'all' ?
+                    $(".fancybox")
+                        .attr("data-fancybox-group", "gallery")
+                        .not(":visible")
+                        .fadeIn()
+                    :
+                    $(".fancybox")
+                        .fadeOut(0)
+                        .filter(function () {
+                            return $(this).data("filter") == $filter;
+                        })
+                        .attr("data-fancybox-group", $filter)
+                        .fadeIn(1000);
+            }
+        });
+    });
+</script>

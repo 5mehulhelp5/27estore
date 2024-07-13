@@ -1,0 +1,5 @@
+title,url_key,image,sort_order,status,store_id
+Cars, Cars     image image@image,car1.jpg,0,enable,0
+Animals,animals @/ image,animal1.jpg,1,enable,0
+Flowers,,flower1.jpg,2,enable,1
+Mix image,mix image,mix image.jpg,3,enable,3

@@ -1,0 +1,123 @@
+Back,Back
+"Delete Item","Delete Item"
+"Are you sure you want to do this?","Are you sure you want to do this?"
+Reset,Reset
+"Save and Continue Edit","Save and Continue Edit"
+"Save Item","Save Item"
+Conditions,Conditions
+"Conditions (don't add conditions if rule is applied to all products)","Conditions (don't add conditions if rule is applied to all products)"
+ProductLabels,ProductLabels
+"You deleted the product label.","You deleted the product label."
+"We can't find the item to delete.","We can't find the item to delete."
+"This product label no longer exists.","This product label no longer exists."
+"Edit Product Label","Edit Product Label"
+"New Product Label","New Product Label"
+"Product Labels","Product Labels"
+"Add Product Labels","Add Product Labels"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"You saved the product label.","You saved the product label."
+"Something went wrong while saving the product label.","Something went wrong while saving the product label."
+"On product image","On product image"
+"After product short description","After product short description"
+"Top Left","Top Left"
+"Top Center","Top Center"
+"Top Right","Top Right"
+"Middle Left","Middle Left"
+"Middle Center","Middle Center"
+"Middle Right","Middle Right"
+"Bottom Left","Bottom Left"
+"Bottom Center","Bottom Center"
+"Bottom Right","Bottom Right"
+"Bellow Product Details","Bellow Product Details"
+Active,Active
+Inactive,Inactive
+"All Store Views","All Store Views"
+"Make sure the To Date is later than or the same as the From Date.","Make sure the To Date is later than or the same as the From Date."
+Edit,Edit
+Delete,Delete
+"Delete %1","Delete %1"
+"Are you sure you want to delete a %1 record?","Are you sure you want to delete a %1 record?"
+"We can't find products matching the selection.","We can't find products matching the selection."
+"Add to Cart","Add to Cart"
+"In stock","In stock"
+"Out of stock","Out of stock"
+"Learn More","Learn More"
+"Related Products","Related Products"
+"We found other products you might like!","We found other products you might like!"
+"More Choices:","More Choices:"
+"New Products","New Products"
+"Check items to add to the cart or","Check items to add to the cart or"
+"select all","select all"
+"Add to Wish List","Add to Wish List"
+"Add to Compare","Add to Compare"
+"Product Labels Settings","Product Labels Settings"
+"ProductLabels Settings","ProductLabels Settings"
+"Enable on product listing","Enable on product listing"
+"Display Mode","Display Mode"
+"Enable on product page","Enable on product page"
+"Enable for product widgets","Enable for product widgets"
+"Enable for related products","Enable for related products"
+"Enable for upsell products","Enable for upsell products"
+"Enable for cross-sell products","Enable for cross-sell products"
+"WeltPixel ProductLabels Rule Product","WeltPixel ProductLabels Rule Product"
+"Indexed productlabels rule/product association","Indexed productlabels rule/product association"
+"WeltPixel ProductLabels Product Rule","WeltPixel ProductLabels Product Rule"
+"Indexed productlabels product/rule association","Indexed productlabels product/rule association"
+"Product Label Information","Product Label Information"
+Title,Title
+"Set current label title. Only for admin purposes, not displayed in frontend.","Set current label title. Only for admin purposes, not displayed in frontend."
+Priority,Priority
+"Use 0 for highest priority and bigger value for lowest priority.","Use 0 for highest priority and bigger value for lowest priority."
+Status,Status
+"Set current label status.","Set current label status."
+"Valid From","Valid From"
+"Valid To","Valid To"
+"Store View","Store View"
+"Customer Group","Customer Group"
+"Label Text","Label Text"
+"
+                        
+                        Insert the label text. You can use variables for dynamic labels. <br/>
+                        Variables that can be used: <br/>
+                        {NL} - for new line, {DAYSLEFT} - days left for current label, {PRICE} - for product price, {SPECIAL_PRICE} - for product special prices, {DISCOUNT_PERCENT} - for product discount, in percent, {DISCOUNT_AMOUNT} - for product discount, as absolute value , {SKU} - for product SKU, {QTY} - for product stock Qty. <br/>
+                        Example: {DISCOUNT_PERCENT} OFF - Save &#36;{DISCOUNT_AMOUNT}
+                        
+                    ","
+                        
+                        Insert the label text. You can use variables for dynamic labels. <br/>
+                        Variables that can be used: <br/>
+                        {NL} - for new line, {DAYSLEFT} - days left for current label, {PRICE} - for product price, {SPECIAL_PRICE} - for product special prices, {DISCOUNT_PERCENT} - for product discount, in percent, {DISCOUNT_AMOUNT} - for product discount, as absolute value , {SKU} - for product SKU, {QTY} - for product stock Qty. <br/>
+                        Example: {DISCOUNT_PERCENT} OFF - Save &#36;{DISCOUNT_AMOUNT}
+                        
+                    "
+"Text Font Color","Text Font Color"
+"Select color for Label text.","Select color for Label text."
+"Text Background Color","Text Background Color"
+"Select color for label background.","Select color for label background."
+"Text Font Size","Text Font Size"
+"Insert font size for label's text. e.g.: 12px","Insert font size for label's text. e.g.: 12px"
+"Text Padding","Text Padding"
+"Insert pandding values. e.g. 10px 20px 10px 20px ","Insert pandding values. e.g. 10px 20px 10px 20px "
+Preview,Preview
+"Custom Css","Custom Css"
+"Customize product label and text styles with CSS parameters. e.g.: transform:rotate(320deg); border-radius:30px; margin-top: 12px;","Customize product label and text styles with CSS parameters. e.g.: transform:rotate(320deg); border-radius:30px; margin-top: 12px;"
+Image,Image
+"
+                        Upload image for Product Label. If image is uploaded, text is no longer visible. <br/> For sample Product Label Images and how to customize your Product Labels click <a href=""https://support.weltpixel.com/hc/en-us/articles/360010853553-How-to-customize-product-labels-like-New-Sale-20-OFF-etc-"" target=""_blank"" >here</a>.
+                    ","
+                        Upload image for Product Label. If image is uploaded, text is no longer visible. <br/> For sample Product Label Images and how to customize your Product Labels click <a href=""https://support.weltpixel.com/hc/en-us/articles/360010853553-How-to-customize-product-labels-like-New-Sale-20-OFF-etc-"" target=""_blank"" >here</a>.
+                    "
+"Label Position","Label Position"
+"Set current label position in the product page.","Set current label position in the product page."
+"Position on Image","Position on Image"
+Position,Position
+"Add New Product Label","Add New Product Label"
+"Delete items","Delete items"
+"Are you sure you wan't to delete selected items?","Are you sure you wan't to delete selected items?"
+Id,Id
+"Product Image","Product Image"
+"Product Text","Product Text"
+"Product Position","Product Position"
+"Category Image","Category Image"
+"Category Text","Category Text"
+"Category Position","Category Position"

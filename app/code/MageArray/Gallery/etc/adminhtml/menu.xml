@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<update id="MageArray_Core::core" title="MageArray Extensions" module="MageArray_Gallery" sortOrder="80" resource="MageArray_Gallery::gallery"/>
+        <add id="MageArray_Gallery::gallery" title="Image Gallery" module="MageArray_Gallery" sortOrder="20"
+              parent="MageArray_Core::core" dependsOnModule="MageArray_Gallery" resource="MageArray_Gallery::gallery"/>
+        <add id="MageArray_Gallery::images" title="Images" module="MageArray_Gallery" sortOrder="30"
+             resource="MageArray_Gallery::images" action="gallery/image/index" parent="MageArray_Gallery::gallery"/>
+        <add id="MageArray_Gallery::categories" title="Categories" module="MageArray_Gallery" sortOrder="40"
+             resource="MageArray_Gallery::categories" action="gallery/category/index"
+             parent="MageArray_Gallery::gallery"/>	
+        <add id="MageArray_Gallery::settings" title="Settings" module="MageArray_Gallery" sortOrder="50"
+             resource="MageArray_Gallery::settings" action="adminhtml/system_config/edit/section/gallery"
+             parent="MageArray_Gallery::gallery"/>
+    </menu>
+</config>

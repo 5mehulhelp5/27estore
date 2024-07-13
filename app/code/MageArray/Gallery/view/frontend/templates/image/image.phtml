@@ -1,0 +1,215 @@
+<?php
+$media = $block->getMediaUrl();
+$categoryId = $block->getRequest()->getParam('category');
+$categories = $block->getCategories();
+$images = $block->getImages($categoryId);
+$displayMode = $block->getDisplayMode();
+$thumbHeight = $block->getThumbHeight();
+$thumbWidth = $block->getThumbWidth();
+$spaceImages = $block->getSpaceImages();
+$notFoundImage = $block->getNotFoundImage();
+?>
+<?php //if (($displayMode) == 'one_page_with_category_filter'): ?>  
+<script>
+ require(['jquery', 'fancybox', 'fancyboxbuttons'], function ($) {
+    $(document).ready(function(){
+                var $filter = $(".filter").data("rel");
+                  if($filter == 'all')     
+                    {
+                        var arr = [];
+                          $(".fancybox").each(function() {
+                             var x = $(this).data("imageid");     
+                             if($.inArray(x,arr)  !== -1)
+                             {
+                               $(this).css('display','none');
+                             }
+                             else
+                             {
+                                arr.push(x);
+                             }
+                             $('a[data-rel="all"]').find(".gallery-filter-counter").text(arr.length);
+                        });    
+                     }  
+            });
+ });
+</script> 
+<?php //endif; ?>
+<?php if (($displayMode) == 'one_page_all_image') : ?>
+    <?php foreach ($images as $image) : ?>
+        <?php if (!empty($image->getImage())) : ?>
+            <?php $imageUrl = $block->getImageUrl(
+                $image,
+                $thumbWidth,
+                $thumbHeight
+            ); ?>
+            <a class="imgContainer fancybox"
+               style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;"
+               data-fancybox-group="gallery"
+               href="<?= /* @noEscape */ $media . 'gallery/' . $image->getImage(); ?>">
+                <div class="image">
+                    <img src="<?= /* @noEscape */ $imageUrl; ?>"
+                         alt=""
+                         style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                         title="<?= /* @noEscape */ $image->getTitle(); ?>"/>
+                </div>
+            </a>
+            <div class="description" style="display: none;">
+                <?= /* @noEscape */ $image->getMetaDescription(); ?>
+            </div>
+        <?php else : ?>
+            <a class="imgContainer fancybox"
+               style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;"
+               data-fancybox-group="gallery"
+               href="<?= /* @noEscape */ $notFoundImage;?>">
+                <div class="image">
+                    <img src="<?= /* @noEscape */ $notFoundImage; ?>"
+                         style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                         alt=""
+                         title="Not Found"/>
+                </div>
+            </a>
+            <div class="description" style="display: none;">
+                <?= /* @noEscape */ $image->getMetaDescription(); ?>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php else : ?>
+    <?php $unique_ids = []; ?>
+    <?php foreach ($categories as $category) : ?>
+        <?php $images = $block->getImages($category->getCategoryId()); ?>
+        <?php foreach ($images as $image) : ?>
+            <?php if (!empty($image->getImage())) : ?>
+                <?php $imageUrl = $block->getImageUrl(
+                    $image,
+                    $thumbWidth,
+                    $thumbHeight
+                );
+                ?>
+                <a  class="imgContainer fancybox"
+                    style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;"
+                    data-fancybox-group="gallery"
+                    data-filter="<?= /* @noEscape */ "category." . $category->getCategoryId(); ?>"
+                    data-imageid="<?= /* @noEscape */ $image->getImageId() ?>"
+                    href="<?= /* @noEscape */ $media . 'gallery/' . $image->getImage(); ?>">
+                    <div class="image">
+                        <img src="<?= /* @noEscape */ $imageUrl; ?>"
+                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                             alt="<?= /* @noEscape */ $image->getMetaDescription(); ?>"
+                             title="<?= /* @noEscape */ $image->getTitle(); ?>"/>
+                    </div>
+                </a>
+                <div class="description" style="display: none;">
+                    <?= /* @noEscape */ $image->getMetaDescription(); ?>
+                </div>
+            <?php else : ?>
+                <a class="imgContainer fancybox"
+                   style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;"
+                   data-fancybox-group="gallery"
+                   data-filter="<?= /* @noEscape */ "category." . $category->getCategoryId(); ?>"
+                   data-imageid="<?= /* @noEscape */ $image->getImageId() ?>" 
+                   href="<?= /* @noEscape */ $notFoundImage; ?>">
+                    <div class="image">
+                        <img src="<?= /* @noEscape */ $notFoundImage; ?>"
+                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                             alt="<?= /* @noEscape */ $image->getMetaDescription(); ?>"
+                             title="Not Found"/>
+                    </div>
+                </a>
+                <div class="description" style="display: none;">
+                    <?= /* @noEscape */ $image->getMetaDescription(); ?>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+<script>
+    if (typeof Display == "undefined") var Display = {};
+    if (typeof Display.Page == "undefined") Display.Page = {};
+    Display.Page.mode = '<?= /* @noEscape */ $displayMode; ?>';
+    require(['jquery', 'fancybox', 'fancyboxbuttons'], function ($) {
+        if (Display.Page.mode == 'one_page_with_category_filter') {
+            
+            jQuery(".fancybox").fancybox({
+                helpers: {
+                    buttons: {}
+                },
+                beforeLoad: function () {
+                    this.title = $(this.element).next('.description').html();
+                }
+
+            });
+
+            $(".gallery-filter-item").click(function (e) {
+                $('.gallery-filter-item').removeClass(
+                    "gallery-filter-item-active"
+                );
+                $(this).removeClass(
+                    "gallery-filter-item"
+                ).addClass(
+                    "gallery-filter-item gallery-filter-item-active"
+                );
+                var $this = $(this).children();
+                if (!$this.hasClass("active")) {
+                    $(".filter").removeClass("active");
+                    $this.addClass("active");
+                    var $filter = $this.data("rel");
+                    $filter == 'all' ?
+                        $(".fancybox")
+                            .attr("data-fancybox-group", "gallery")
+                            .not(":visible")
+                            .fadeIn()
+                        :
+                        $(".fancybox")
+                            .fadeOut(0)
+                            .filter(function () {
+                                return $(this).data("filter") == $filter;
+                            })
+                            .attr("data-fancybox-group", $filter)
+                            .fadeIn(1000);
+                    if($filter == 'all')     
+                    {
+                        var arr = [];
+                          $(".fancybox").each(function() {
+                             var x = $(this).data("imageid");     
+                             if($.inArray(x,arr)  !== -1)
+                             {
+                               $(this).css('display','none');
+                             }
+                             else
+                             {
+                                arr.push(x);
+                             }
+                        });    
+                     } 
+                 }
+            });
+
+        } else {
+            $(".fancybox").fancybox({
+                modal: true,
+                animated: 'fade',
+                helpers: {
+                    buttons: {}
+                },
+                beforeLoad: function () {
+                    this.title = $(this.element).next('.description').html();
+                }
+            });
+
+            $(".gallery-filter-item").click(function (e) {
+                $('.gallery-filter-item').removeClass(
+                    "gallery-filter-item-active"
+                );
+                $(this).removeClass(
+                    "gallery-filter-item"
+                ).addClass(
+                    "gallery-filter-item gallery-filter-item-active"
+                );
+            });
+            $(".filter").click(function (e) {
+                $(".filter").removeClass("active");
+                $(this).addClass("active");
+            });
+        }
+    });
+</script>

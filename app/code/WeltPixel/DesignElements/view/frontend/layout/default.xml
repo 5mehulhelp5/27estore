@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name='root'>
+            <block class='WeltPixel\DesignElements\Block\Init' name='weltpixel.designelements.init' />
+        </referenceContainer>
+        <referenceBlock name="head.additional">
+            <block name="pearl_custom_development_css" as="pearl_custom_development_css" template="WeltPixel_DesignElements::html/pearl_custom_css.phtml" ifconfig="weltpixel_design_elements/general/include_custom_css" />
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="welpixel.designelements.base.js" template="WeltPixel_DesignElements::before_body_end_basejs.phtml" />
+        </referenceContainer>
+    </body>
+</page>

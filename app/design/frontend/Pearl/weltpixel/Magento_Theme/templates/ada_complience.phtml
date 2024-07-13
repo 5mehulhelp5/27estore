@@ -1,0 +1,20 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+<script>
+    require(["jquery"], function ($) {
+        $(document).ready(function () {
+            let noticeAriaLabelName = "<?= $block->escapeHtml(__('Cookies Restriction Messages')) ?>";
+            let minicartAriaLabelName = "<?= $block->escapeHtml(__('Minicart Popup Container')) ?>";
+            $('#notice-cookie-block').attr('aria-label', noticeAriaLabelName);
+
+            $('div.block.block-minicart').on('dropdowndialogcreate', function () {
+                $(this).parent().attr('aria-label', minicartAriaLabelName);
+            });
+
+            $('select.limiter-options').attr('aria-label', '<?= $block->escapeHtml(__('Show per page')) ?>');
+            $('td.col.actions').attr('aria-label', '<?= $block->escapeHtml(__('Actions Column')) ?>');
+        });
+    });
+</script>
+

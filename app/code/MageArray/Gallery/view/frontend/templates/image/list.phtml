@@ -1,0 +1,198 @@
+<?php
+$media = $block->getMediaUrl();
+$categoryId = $block->getRequest()->getParam('category');
+$categories = $block->getCategories();
+$images = $block->getImages($categoryId);
+$displayMode = $block->getDisplayMode();
+$pageUrl = $block->getPageUrl();
+$categoryUrl = $block->getCategoryTree();
+$thumbHeight = $block->getThumbHeight();
+$thumbWidth = $block->getThumbWidth();
+$spaceImages = $block->getSpaceImages();
+$currentStoreId = $block->getCurrentStoreId();
+$notFoundImage = $block->getNotFoundImage();
+?>
+<?php if ($categories->getSize()) : ?>
+    <?php if (($displayMode) == 'one_page_all_image') : ?>
+        <div id="wrap" class="cf">
+            <div class="galleryWrap cf" id="test">
+                <?= /* @noEscape */ $block->getChildHtml('image') ?>
+            </div>
+        </div>
+    <?php elseif (($displayMode) == 'one_page_with_category_filter') : ?>
+        <div id="wrap" class="cf">
+            <div id="galleryTab" class="cf">
+                <div class="gallery-filters-button" id="filters-container">
+                    <div data-filter="*"
+                         class="gallery-filter-item gallery-filter-item-active">
+                        <a href="javascript:;"
+                           data-rel="all"
+                           class="filter active">
+                            <?= /* @noEscape */ __('All'); ?>
+                            <div class="gallery-filter-counter">
+                                <?php $imageCount = 0; ?>
+                                <?php foreach ($images as $image) : ?>
+                                    <?php $imageCategory = explode(
+                                        ",",
+                                        $image->getImageCategory()
+                                    ); ?>
+                                    <?php $imageCount = $imageCount + count(
+                                        $imageCategory
+                                    ); ?>
+                                <?php endforeach; ?>
+                                <?= /* @noEscape */ $imageCount; ?>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <?php foreach ($categories as $category) : ?>
+                    <?php $images = $block->getImages(
+                        $category->getCategoryId()
+                    ); ?>
+                    <div class="gallery-filters-button" id="filters-container">
+                        <div data-filter="*" class="gallery-filter-item">
+                            <a href="javascript:;"
+                               rel="<?= /* @noEscape */ $category->getCategoryId(); ?>"
+                               data-rel="<?= /* @noEscape */ "category." .
+                                   $category->getCategoryId(); ?>"
+                               class="filter">
+                                <?= /* @noEscape */ $category->getTitle(); ?>
+                                <div class="gallery-filter-counter">
+                                    <?= /* @noEscape */ $images->count(); ?>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="galleryWrap cf" id="test">
+                <?= /* @noEscape */ $block->getChildHtml('image') ?>
+            </div>
+        </div>
+    <?php elseif (($displayMode) == 'multiple_page_with_category_text') : ?>
+        <div id="wrap" class="cf">
+            <div id="galleryTab" class="cf">
+                <div class="gallery-filters-button"
+                     id="filters-container">
+                    <div class="gallery-filters-button"
+                         id="filters-container">
+                        <div data-filter="*"
+                             class="gallery-filter-item gallery-filter-item-active">
+                            <a href="javascript:;"
+                               data-rel="all"
+                               class="filter active">
+                                <?= /* @noEscape */ __('All'); ?>
+                                <div class="gallery-filter-counter">
+                                    <?php $imageCount = 0; ?>
+                                    <?php foreach ($images as $image) : ?>
+                                        <?php $imageCategory = explode(",", $image->getImageCategory()); ?>
+                                        <?php $imageCount = $imageCount + count($imageCategory); ?>
+                                    <?php endforeach; ?>
+                                    <?= /* @noEscape */ $imageCount; ?>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php foreach ($categories as $category) : ?>
+                    <?php $images = $block->getImages(
+                        $category->getCategoryId()
+                    ); ?>
+                    <div class="gallery-filters-button" id="filters-container">
+                        <div class="gallery-filter-item">
+                            <?php if (!empty($category->getUrlKey())) : ?>
+                                <a href="<?= /* @noEscape */ $block->getCategoryUrl($category->getUrlKey()); ?>"
+                                   class="filter">
+                                    <?= /* @noEscape */ $category->getTitle(); ?>
+                                    <div class="gallery-filter-counter">
+                                        <?= /* @noEscape */ $images->count(); ?>
+                                    </div>
+                                </a>
+                            <?php else : ?>
+                                <a href="<?= /* @noEscape */ $block->getUrl() .
+                                    $pageUrl .
+                                    "/category/categorylist/cat/" .
+                                    $category->getCategoryId(); ?>"
+                                   class="filter">
+                                    <?= /* @noEscape */ $category->getTitle(); ?>
+                                    <div class="gallery-filter-counter">
+                                        <?= /* @noEscape */ $images->count(); ?>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="galleryWrap cf" id="test">
+                <?= /* @noEscape */ $block->getChildHtml('image') ?>
+            </div>
+        </div>
+    <?php elseif (($displayMode) == 'multiple_page_with_category_Image') : ?>
+        <div id="wrap" class="cf">
+            <div class="categories">
+                <?php foreach ($categories as $category) : ?>
+                    <?php $categoryImage = $block->getCategoryImage(
+                        $category,
+                        $thumbWidth,
+                        $thumbHeight
+                    ); ?>
+                    <?php if (!empty($category->getUrlKey())) : ?>
+                        <div class="category-container">
+                            <?php if (!empty($category->getImage())) : ?>
+                                <a href="<?= /* @noEscape */ $block->getCategoryUrl($category->getUrlKey()); ?>">
+                                    <div class="categories-image"
+                                         style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;">
+                                        <img src="<?= /* @noEscape */ $categoryImage; ?>"
+                                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                                             alt=""
+                                             title="
+                                         <?= /* @noEscape */ $category->getTitle(); ?>"/>
+                                    </div>
+                                </a>
+                            <?php else : ?>
+                                <a href="<?= /* @noEscape */ $block->getCategoryUrl($category->getUrlKey()); ?>">
+                                    <div class="categories-image"
+                                         style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;">
+                                    <img src="<?= /* @noEscape */ $notFoundImage; ?>"
+                                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                                             alt=""
+                                             title="Not Found"/>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+                            <div class="category-title">
+                                <?= /* @noEscape */ $category->getTitle(); ?>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <div class="category-container">
+                            <a href="<?= /* @noEscape */ $block->getUrl() .
+                                $pageUrl .
+                                "/category/categorylist/cat/" .
+                                $category->getCategoryId(); ?>">
+                                <div class="categories-image"
+                                     style="margin :<?= /* @noEscape */ $spaceImages . 'px' ?>;">
+                                    <?php if (!empty($category->getImage())) : ?>
+                                        <img src="<?= /* @noEscape */ $categoryImage; ?>"
+                                             alt=""
+                                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                                             title="<?= /* @noEscape */ $category->getTitle(); ?>"/>
+                                    <?php else : ?>
+                                    <img src="<?= /* @noEscape */ $notFoundImage; ?>"
+                                             style="height :<?= /* @noEscape */ $thumbHeight . 'px'; ?>"
+                                             alt=""
+                                             title="Not Found"/>
+                                    <?php endif; ?>
+                                </div>
+                            </a>
+                            <div class="category-title">
+                                <?= /* @noEscape */ $category->getTitle(); ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
