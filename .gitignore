@@ -41,6 +41,13 @@
 # https://mage2.pro/t/6339
 # 2) "Adapt the website to Windows": https://github.com/27estore/site/issues/2
 !/vendor/magento/framework/View/Element/Template/File/Validator.php
+# 2024-07-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 1.1) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
+# https://mage2.pro/t/6411
+# 1.2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getImageInfo()` to Windows in Magento ≥ 2.3.0?":
+# https://mage2.pro/t/6412
+# 2) "Adapt the website to Windows": https://github.com/27estore/site/issues/2
+!/vendor/magento/module-catalog/Model/View/Asset/Image.php
 /vendor/magento/magento2-base
 /vendor/magento/magento2-functional-testing-framework
 /vendor/tubalmartin
