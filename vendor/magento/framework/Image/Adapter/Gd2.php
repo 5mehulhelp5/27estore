@@ -93,7 +93,11 @@ class Gd2 extends AbstractAdapter
     {
         $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
         $url = parse_url($filename);
-        if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes)) {
+		# 2024-07-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 1) "How to fix «Unable to apply data patch Magento\Theme\Setup\Patch\Data\RegisterThemes for module Magento_Theme»
+		# in Magento ≥ 2.3.5 in Windows?" https://mage2.pro/t/6177
+		# 2) "Adapt the website to Windows": https://github.com/27estore/site/issues/2
+        if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes) && !file_exists($filename)) {
             return false;
         }
 
