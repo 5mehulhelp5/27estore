@@ -48,6 +48,14 @@
 # https://mage2.pro/t/6412
 # 2) "Adapt the website to Windows": https://github.com/27estore/site/issues/2
 !/vendor/magento/module-catalog/Model/View/Asset/Image.php
+# 2024-07-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 1) "«Environment emulation nesting is not allowed» on sending invoice / shipment / creditmemo emails":
+# https://github.com/27estore/site/issues/3
+# 2) "How did I fix «Environment emulation nesting is not allowed»
+# on sending invoice / shipment / creditmemo emails in 2.4.4 ≤ Magento < 2.4.7-beta2?": https://mage2.pro/t/6392
+!/vendor/magento/module-sales/Model/Order/Email/Sender/CreditmemoSender.php
+!/vendor/magento/module-sales/Model/Order/Email/Sender/InvoiceSender.php
+!/vendor/magento/module-sales/Model/Order/Email/Sender/ShipmentSender.php
 /vendor/magento/magento2-base
 /vendor/magento/magento2-functional-testing-framework
 /vendor/tubalmartin
