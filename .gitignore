@@ -63,3 +63,5 @@
 # Today I noticed that `git add . && git commit -a -m refactoring && git push`
 # started to commit subfolders which are git repositories (for an unknown reason).
 /_my
+/vendor/27estore
+/vendor/mage2pro
