@@ -117,7 +117,8 @@ $_helper = $block->getData('outputHelper');
                                             title="<?= $escaper->escapeHtmlAttr(__('Get a Sample')) ?>"
                                             class="wk-sampleproduct-addttocart-btn">
                                             <span>
-                                                <?= $escaper->escapeHtml(__('Get a Sample for %1', $price)) ?>
+                                                <!-- <?= $escaper->escapeHtml(__('Get a Sample for %1', $price)) ?> -->
+                                                <?= $escaper->escapeHtml(__('Order a Sample', $price)) ?>
                                             </span>
                                         </button>
                                     <?php } ?>
@@ -127,7 +128,10 @@ $_helper = $block->getData('outputHelper');
 
                         <?= $block->getProductDetailsHtml($_product) ?>
 
-                        <div class="product-item-inner">
+
+                        <!-- COMENTED OUT to prevent adding an unwanted ADD TO CART button -->
+
+                        <!-- <div class="product-item-inner">
                             <div class="product actions product-item-actions">
                                 <div class="actions-primary">
                                     <?php if ($_product->isSaleable()):?>
@@ -190,7 +194,10 @@ $_helper = $block->getData('outputHelper');
                                        class="action more"><?= $escaper->escapeHtml(__('Learn More')) ?></a>
                                 </div>
                             <?php endif; ?>
-                        </div>
+                        </div> -->
+                        
+                        <!-- END OF COMMENTED CODE -->
+
                     </div>
                 </div>
                 <?= $pos ? (strpos($pos, $viewMode . '-actions') ?

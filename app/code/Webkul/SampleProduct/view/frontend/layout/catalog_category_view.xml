@@ -10,6 +10,9 @@
  * @license   https://store.webkul.com/license.html
  */
 -->
+
+<!-- THIS IS COMMENTED OUT BECAUSE IT MESSES WITH CATEGORY PAGES. Plugin does not have a way of dissabling this from Magento interface, so this is the only way of doing it. -->
+
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="Webkul_SampleProduct::css/style.css"/>       
