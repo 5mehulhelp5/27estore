@@ -1,5 +1,5 @@
 <?php
-return [
+$r = [
     'modules' => [
         'Magento_Store' => 1,
         'Magento_Config' => 1,
@@ -434,3 +434,14 @@ return [
         'WeltPixel_UserProfile' => 1
     ]
 ];
+return $r;
+/*	array_filter($r, function(string $k):string {return
+	0 !== strpos($k, 'Magefan_')
+	&& 0 !== strpos($k, 'OlegKoval_')
+	&& 0 !== strpos($k, 'PayPal_')
+	&& 0 !== strpos($k, 'Utklasad_')
+	&& 0 !== strpos($k, 'WeSupply_')
+	&& 0 !== strpos($k, 'WeltPixel_')
+	&& 0 !== strpos($k, 'Boolfly_')
+;
+}, ARRAY_FILTER_USE_KEY);*/
