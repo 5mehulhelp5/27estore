@@ -1,0 +1,18 @@
+{
+    "name": "magefan/module-google-shopping-feed",
+    "description": "Google Shopping Feed",
+    "type": "magento2-module",
+    "version": "2.1.6",
+    "license": "EULA",
+    "require": {
+        "magefan/module-community" : ">=2.1.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magefan\\GoogleShoppingFeed\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ */
+?>
+<?php if ($block->getRequest()->getParam('mfpreselect')) { ?>
+<script type="text/javascript">
+    if (window.require) require(['jquery', 'domReady!'], function ($) {
+        var queryString = new URLSearchParams(window.location.search.split('?')[1]);
+        var productId = queryString.get('mfpreselect');
+        if (productId) {
+            var pair, key, val;
+            var data = {};
+
+            for (pair of queryString.entries()) {
+                key = pair[0];
+                val =  pair[1];
+
+                if (!isNaN(key) && !isNaN(val)) {
+                    data[key] = val;
+                }
+            }
+
+            if (data) {
+                if ($('.product-info-main .swatch-opt').length) {
+                    $('.product-info-main .swatch-opt').on("swatch.initialized", function () {
+                        var swatchWidget = $('.swatch-opt').data('mageSwatchRenderer') || $('.swatch-opt').data('mage-SwatchRenderer');
+                        if (!swatchWidget || !swatchWidget._EmulateSelectedByAttributeId) {
+                            return;
+                        }
+                        swatchWidget._EmulateSelectedByAttributeId(data);
+                    });
+                } else {
+                    var configurableWidgetInterval = setInterval(function(){
+                        var configurableWidget = $('#product_addtocart_form').data('mageConfigurable');
+                        if (!configurableWidget) return;
+                        clearInterval(configurableWidgetInterval);
+                        if (configurableWidget) {
+                            configurableWidget.options.values = data;
+                            configurableWidget._configureForValues();
+                        }
+                    }, 1000);
+                }
+            }
+        }
+    });
+</script>
+<?php } ?>
