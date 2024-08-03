@@ -123,10 +123,27 @@ class Builder extends \Magento\Rule\Model\Condition\Sql\Builder
         // below is a solution for matching such conditions with selected values
         if (is_array($bindValue) && \in_array($conditionOperator, ['()', '{}'], true)) {
             foreach ($bindValue as $item) {
-                $expression .= $this->_connection->quoteInto(
-                    " OR (FIND_IN_SET (?, {$this->_connection->quoteIdentifier($argument)}) > 0)",
-                    $item
+                $ifNullSqlQuoteIdentifier = (string) $this->_connection->getIfNullSql(
+                    $this->_connection->quoteIdentifier($argument),
+                    $defaultValue
                 );
+
+                $expression .= ($e = $this->_connection->quoteInto(
+                    " OR (FIND_IN_SET (?, {$ifNullSqlQuoteIdentifier}) > 0)",
+                    $item
+                ));
+            }
+        } elseif (is_array($bindValue) && \in_array($conditionOperator, ['!()', '!{}'], true)) {
+            foreach ($bindValue as $item) {
+                $ifNullSqlQuoteIdentifier = (string) $this->_connection->getIfNullSql(
+                    $this->_connection->quoteIdentifier($argument),
+                    $defaultValue
+                );
+
+                $expression .= ($e = $this->_connection->quoteInto(
+                    " AND (FIND_IN_SET (?, {$ifNullSqlQuoteIdentifier}) = 0)",
+                    $item
+                ));
             }
         }
 
