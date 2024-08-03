@@ -1,5 +1,5 @@
 <?php
-$r = [
+return [
     'modules' => [
         'Magento_Store' => 1,
         'Magento_Config' => 1,
@@ -385,6 +385,7 @@ $r = [
         'Magefan_Community' => 1,
         'Magefan_Blog' => 1,
         'Magefan_BlogGraphQl' => 1,
+        'Magefan_GoogleShoppingFeed' => 1,
         'Magefan_WysiwygAdvanced' => 1,
         'OlegKoval_RegenerateUrlRewrites' => 1,
         'PayPal_Braintree' => 1,
@@ -434,14 +435,3 @@ $r = [
         'WeltPixel_UserProfile' => 1
     ]
 ];
-return $r;
-/*	array_filter($r, function(string $k):string {return
-	0 !== strpos($k, 'Magefan_')
-	&& 0 !== strpos($k, 'OlegKoval_')
-	&& 0 !== strpos($k, 'PayPal_')
-	&& 0 !== strpos($k, 'Utklasad_')
-	&& 0 !== strpos($k, 'WeSupply_')
-	&& 0 !== strpos($k, 'WeltPixel_')
-	&& 0 !== strpos($k, 'Boolfly_')
-;
-}, ARRAY_FILTER_USE_KEY);*/
