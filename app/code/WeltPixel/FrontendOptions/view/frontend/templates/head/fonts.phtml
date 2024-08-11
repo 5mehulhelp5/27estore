@@ -8,6 +8,7 @@
     $loadFontsAsync = $block->isAsyncFontLoadEnabled();
     $asyncFontOptions = $block->getAsyncFontFamilyOptions();
     $fontUrl = $block->getGoogleFonts();
+    $cspNonceProvider = $block->getCspNonceProvider();
 
 ?>
 <?php if (!$loadFontsAsync && $fontUrl) : ?>
@@ -15,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="<?php /* @escapeNotVerified */ echo $fontUrl; ?>" rel="stylesheet">
 <?php elseif ($loadFontsAsync && count($asyncFontOptions)) : ?>
-    <script type="text/javascript">
+    <script type="text/javascript" <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         WebFontConfig = {
             google: { families: <?= json_encode($asyncFontOptions) ?> }
         };
