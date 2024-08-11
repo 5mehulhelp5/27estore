@@ -35,6 +35,8 @@
         '`': '&#x60;',
         '=': '&#x3D;'
     };
+    var nextPageUrl  = false;
+    var nextPageData = false;
 
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
@@ -79,11 +81,37 @@
         try {
             let data = response.data;
             if(typeof data !== "undefined"){
+                if (typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                    nextPageUrl = response.paging.next;
+                } else {
+                    nextPageUrl = false;
+                }
                 return data;
             }
         } catch (e) {
             return false;
         }
+    }
+
+    function getNextPage(url) {
+        $.get({
+            url: url,
+            async: false,
+            success: function(response){
+                data = parse_response(response);
+                if(data !== false){
+                    nextPageData = data;
+                    // return data;
+                }else{
+                    nextPageData = false;
+                    // return false;
+                }
+            },
+            error: function (e) {
+                nextPageData = false;
+                // return false;
+            }
+        });
     }
 
     function request_data(url, token, callback){
@@ -156,7 +184,7 @@
             var url = data[i].permalink;
             var image = data[i].media_url;
             var caption = (data[i].caption) ? escape_string(data[i].caption) : '';
-            if (mediaType.toUpperCase() == 'IMAGE') {
+            if (mediaType.toUpperCase() == 'IMAGE' || mediaType.toUpperCase() == 'CAROUSEL_ALBUM') {
                 html +=     "    <a href='" + url + "'" + (options.display_captions && caption  ? " data-caption='" + caption + "'" : "") +  "  rel='noopener'" + options.image_new_tab + ">";
                 if (options.image_lazy_load) {
                     html += "<span style='width: auto; height: 320px; float: none; display: block; position: relative;'>";
@@ -186,6 +214,13 @@
                 totalDisplays += 1;
             }
             i += 1;
+            if (i == data.length && nextPageUrl) {
+                getNextPage(nextPageUrl);
+                if (nextPageData) {
+                    data = nextPageData;
+                    i = 0;
+                }
+            }
         } while ( (totalDisplays < max) && (i < data.length) );
 
         /** WeltPixel Rendering */
