@@ -160,6 +160,7 @@ define(['jquery', 'Magento_Customer/js/customer-data', 'domReady!'], function ($
                                 }
                             } else {
                                 that.moveElementsOnSticky(config.headerSection, config.navSection, 'in', config);
+                                $('.sticky-custom-width').css('width', 'auto');
                                 config.navSection.removeClass('sticky-header');
                                 that.showHideElements('show', [
                                     config.globalPromo,
@@ -184,6 +185,7 @@ define(['jquery', 'Magento_Customer/js/customer-data', 'domReady!'], function ($
 
 
                 } else {
+                    $('.sticky-custom-width').css('width', 'auto');
                     config.headerSection.removeClass('sticky-header');
                     config.navSection.removeClass('sticky-header sticky-header-nav');
 
@@ -295,10 +297,12 @@ define(['jquery', 'Magento_Customer/js/customer-data', 'domReady!'], function ($
                 if (a) {
                     a.appendTo(config.headerPlaceholder);
                     a.removeClass('sticky-header');
+                    $('.sticky-custom-width').css('width', 'auto');
                 }
                 if (b) {
                     b.appendTo(config.headerPlaceholder);
                     b.removeClass('sticky-header-nav');
+                    $('.sticky-custom-width').css('width', 'auto');
                 }
             }
             if (config.triggerEvent == "scroll" && $('.minicart-wrapper .actions .paypal-logo').length > 0) {
@@ -378,6 +382,10 @@ define(['jquery', 'Magento_Customer/js/customer-data', 'domReady!'], function ($
                     $(this).addClass('top-moved');
                 });
             }
+
+            let blockSearchW = $('.header.content  > .block-search').outerWidth() || $('.header.content  .header_right > .block-search').outerWidth();
+            let blockWidthMenuReducement = parseInt(blockSearchW) + parseInt(headerMinicartW) + 150;
+            $('.sticky-header .nav-sections').css('width', 'calc(100% - ' +  blockWidthMenuReducement +'px)').addClass('sticky-custom-width');
         },
         fixFullWidthMenus: function (that, config) {
             var pageWrapperW = config.pageWrapper.width(),
