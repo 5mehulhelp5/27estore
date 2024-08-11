@@ -22,6 +22,7 @@
         <attribute name="weltpixel_mm_mob_hide_allcat" />
         <attribute name="weltpixel_mm_font_color" />
         <attribute name="weltpixel_mm_label_text" />
+        <attribute name="weltpixel_mm_category_text" />
         <attribute name="weltpixel_mm_label_font_color" />
         <attribute name="weltpixel_mm_label_background_color" />
         <attribute name="weltpixel_mm_label_position" />
@@ -38,6 +39,7 @@
         <attribute name="weltpixel_sc_layout" />
         <attribute name="weltpixel_sc_columns" />
         <attribute name="weltpixel_sc_title_position" />
+        <attribute name="weltpixel_sc_show_description" />
         <attribute name="weltpixel_mm_image_radius" />
         <attribute name="weltpixel_mm_image_position" />
     </group>

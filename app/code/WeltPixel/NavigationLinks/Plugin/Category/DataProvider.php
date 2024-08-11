@@ -16,6 +16,7 @@ class DataProvider extends \WeltPixel\Backend\Plugin\Category\DataProvider
                 'weltpixel_sc_layout',
                 'weltpixel_sc_columns',
                 'weltpixel_sc_title_position',
+                'weltpixel_sc_show_description',
                 'weltpixel_sc_image',
                 'weltpixel_sc_hide'
             ],
@@ -47,6 +48,7 @@ class DataProvider extends \WeltPixel\Backend\Plugin\Category\DataProvider
                 'weltpixel_mm_image_name_align',
                 'weltpixel_mm_image',
                 'weltpixel_mm_label_text',
+                'weltpixel_mm_category_text',
                 'weltpixel_mm_label_font_color',
                 'weltpixel_mm_label_background_color',
                 'weltpixel_mm_label_position',

@@ -5,7 +5,16 @@
             <label>Mega Menu</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_NavigationLinks::MegamenuSettings</resource>
-            <group id="notification" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mega Menu</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_NavigationLinks</button_label>
+                </field>
+            </group>
+            <group id="notification" translate="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>WeltPixel Mega Menu Instructions</label>
                 <fieldset_css>weltpixel-recommended-header active</fieldset_css>
                 <field id="notification_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">

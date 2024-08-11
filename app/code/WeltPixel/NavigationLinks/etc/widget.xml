@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="weltpixel_subcategories_grid" class="WeltPixel\NavigationLinks\Block\Widget\SubCategory">
+        <label translate="true">WeltPixel - Subcategories Grid</label>
+        <description>WeltPixel - Subcategories Grid</description>
+        <parameters>
+            <parameter name="category" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Category</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Category...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="number_of_columns" xsi:type="select" source_model="WeltPixel\NavigationLinks\Model\Attribute\Source\ColumnsOptions" visible="true" sort_order="15" >
+                <label translate="true">Number of Columns</label>
+            </parameter>
+            <parameter name="title_position" xsi:type="select" source_model="WeltPixel\NavigationLinks\Model\Attribute\Source\SubCategoryTitlePosition" visible="true" sort_order="20" >
+                <label translate="true">Sub-category title position</label>
+            </parameter>
+            <parameter name="display_description" xsi:type="select"   source_model="Magento\Config\Model\Config\Source\Yesno" visible="true" sort_order="30" >
+                <label translate="true">Sub-category title position</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

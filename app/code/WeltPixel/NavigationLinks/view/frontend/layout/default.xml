@@ -6,7 +6,7 @@
     </head>
     <body>
         <referenceContainer name="before.body.end">
-            <block ifconfig="weltpixel_megamenu/megamenu/enable" class="WeltPixel\NavigationLinks\Block\Html\Topmenu" name="navigation.js" template="WeltPixel_NavigationLinks::navigation_js.phtml" ttl="3600" />
+            <block ifconfig="weltpixel_megamenu/megamenu/enable" class="Magento\Framework\View\Element\Template" name="navigation.js" template="WeltPixel_NavigationLinks::navigation_js.phtml" />
         </referenceContainer>
     </body>
 </page>

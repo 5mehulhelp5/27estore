@@ -1,22 +1,16 @@
 <?php
-/**
- * Category view template
- *
- * @var $block \Magento\Catalog\Block\Category\View
- */
 
-$_category = $block->getCurrentCategory();
-$subcategoriesLayout = $_category->getData('weltpixel_sc_layout');
+$_category = $block->getSelectedCategory();
 $_helper = $this->helper(WeltPixel\NavigationLinks\Helper\Subcategories::class);
-$categoryGridColsNr = $_category->getData('weltpixel_sc_columns');
-$categoryTitlePosition = $_category->getData('weltpixel_sc_title_position');
-$categoryShowDescription = $_category->getData('weltpixel_sc_show_description');
+$categoryGridColsNr = $block->getData('number_of_columns');
+$categoryTitlePosition = $block->getData('title_position');
+$categoryShowDescription = $block->getData('display_description');
 $gridColNr = ($categoryGridColsNr) ? $categoryGridColsNr : '4';
 
-if ($subcategoriesLayout == \WeltPixel\NavigationLinks\Model\Attribute\Source\CategoryLayout::LAYOUT_IMAGES) :
+if ($_category) :
     $subcategories = $_helper->getSubcategories($_category);
 ?>
-<div class="wp-subcategories">
+<div class="wp-subcategories-widget">
     <ul class="wp-subcategories-grid wp-subcategories-col-<?= $gridColNr ?>">
     <?php foreach ($subcategories as $subcateg) : ?>
         <?php
