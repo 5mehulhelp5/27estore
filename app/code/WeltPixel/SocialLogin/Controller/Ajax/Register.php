@@ -144,6 +144,16 @@ class Register extends \Magento\Framework\App\Action\Action
      */
     protected $helper;
 
+    /**
+     * @var ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
+     * @var StoreManagerInterface
+     */
+    protected $storeManager;
+
 
     /**
      * @param Context $context
