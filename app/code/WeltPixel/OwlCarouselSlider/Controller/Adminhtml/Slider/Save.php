@@ -85,7 +85,7 @@ class Save extends \WeltPixel\OwlCarouselSlider\Controller\Adminhtml\Slider
                             unset($currentBannerOrders[$sliderModel->getId()]);
                         }
 
-                        if (count($currentBannerOrders)) {
+                        if (is_array($currentBannerOrders) && count($currentBannerOrders)) {
                             $currentBannerOrders = $this->_serializer->serialize($currentBannerOrders);
                         } else {
                             $currentBannerOrders = 0;
