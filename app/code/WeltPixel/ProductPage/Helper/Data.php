@@ -284,6 +284,26 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @return string
      */
+    public function getQtyTemplateForGrouped()
+    {
+        $template = 'Magento_GroupedProduct::product/view/type/grouped.phtml';
+        $qtyType = $this->getQtyType();
+
+        switch ($qtyType) {
+            case \WeltPixel\ProductPage\Model\Config\Source\QtyType::QTY_SELECT:
+                $template = 'WeltPixel_ProductPage::product/view/type/grouped/addtocart_select.phtml';
+                break;
+            case \WeltPixel\ProductPage\Model\Config\Source\QtyType::QTY_PLUS_MINUS:
+                $template = 'WeltPixel_ProductPage::product/view/type/grouped/addtocart_plus_minus.phtml';
+                break;
+        }
+
+        return $template;
+    }
+
+    /**
+     * @return string
+     */
     public function getQtyTemplate()
     {
         $template = 'WeltPixel_ProductPage::product/view/addtocart_default.phtml';

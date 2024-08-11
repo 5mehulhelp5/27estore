@@ -60,6 +60,7 @@
                 <radius>25px</radius>
                 <width>25px</width>
                 <auto_select>0</auto_select>
+                <apply_to_text_swatches>1</apply_to_text_swatches>
             </swatch>
             <css>
                 <tab_active_background>#FFFFFF</tab_active_background>
