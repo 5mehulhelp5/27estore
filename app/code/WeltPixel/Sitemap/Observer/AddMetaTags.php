@@ -81,14 +81,15 @@ class AddMetaTags implements ObserverInterface
             case 'cms_index_index':
             case 'cms_page_view':
             case 'cms_noroute_index':
-                $page = $this->_layout->getBlock('cms_page')->getPage();
-                if ($page->getData('wp_enable_index_follow')) {
+                $page = $this->_layout->getBlock('cms_page');
+                if ($page) $page = $page->getPage();
+                if ($page && $page->getData('wp_enable_index_follow')) {
                     $indexValue = $page->getData('wp_index_value');
                     $followValue = $page->getData('wp_follow_value');
                     $indexFollowValue = $this->_indexFollowBuilder->getIndexFollowValue($indexValue, $followValue);
                     $this->_pageConfig->setRobots($indexFollowValue);
                 }
-                if ($page->getData('wp_enable_canonical_url')) {
+                if ($page && $page->getData('wp_enable_canonical_url')) {
                     $canonicalUrl = $page->getData('wp_canonical_url');
                     $this->_pageConfig->addRemotePageAsset(
                         $canonicalUrl,
