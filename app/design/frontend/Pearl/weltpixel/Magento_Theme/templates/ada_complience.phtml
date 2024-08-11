@@ -1,7 +1,11 @@
 <?php
 /** @var \Magento\Framework\View\Element\Template $block */
+
+/** @var \WeltPixel\FrontendOptions\Helper\Data $wpHelper */
+$wpHelper = $this->helper('WeltPixel\FrontendOptions\Helper\Data');
+$cspNonceProvider = $wpHelper->getCspNonceProvider();
 ?>
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     require(["jquery"], function ($) {
         $(document).ready(function () {
             let noticeAriaLabelName = "<?= $block->escapeHtml(__('Cookies Restriction Messages')) ?>";

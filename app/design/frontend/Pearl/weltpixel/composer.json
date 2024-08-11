@@ -33,7 +33,7 @@
         "magento/framework": "*"
     },
     "type": "magento2-theme",
-    "version": "101.11.21",
+    "version": "101.14.3",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
