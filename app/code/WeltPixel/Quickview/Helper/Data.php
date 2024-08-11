@@ -333,5 +333,17 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return $this->scopeConfig->getValue('tax/display/type', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
+
+    /**
+     * @return false|\Magento\Csp\Helper\CspNonceProvider
+     */
+    public function getCspNonceProvider()
+    {
+        if (class_exists(\Magento\Csp\Helper\CspNonceProvider::class)) {
+            return  \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Csp\Helper\CspNonceProvider::class);
+        }
+
+        return false;
+    }
 }
 
