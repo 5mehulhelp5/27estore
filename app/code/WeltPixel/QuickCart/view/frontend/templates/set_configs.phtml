@@ -1,6 +1,9 @@
-<?php $_helper = $this->helper('WeltPixel\QuickCart\Helper\Data'); ?>
+<?php
+$_helper = $this->helper('WeltPixel\QuickCart\Helper\Data');
+$cspNonceProvider = $_helper->getCspNonceProvider();
+?>
 <?php if ($_helper->quicartIsEnabled()): ?>
-    <script>
+    <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         window.openMinicart = '<?php /* @escapeNotVerified */ echo $_helper->openMinicart(); ?>';
         window.shouldOpenMinicart = '1';
         window.openMinicartDisplayOptions = '<?php /* @escapeNotVerified */ echo $_helper->getQuickCartDisplayOptions(); ?>';
