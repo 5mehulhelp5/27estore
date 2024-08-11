@@ -100,7 +100,7 @@ class BlockAfterToHtml implements ObserverInterface
 
         if ($jsMoveToBottomEnabled && !$this->request->isAjax() && $this->layout->hasElement('before_body_js')) {
             $block = $observer->getData('block');
-            $ignoredBlocks = ['require.js', 'head.additional', 'transparent_iframe', 'wp.gtm.datalayer.scripts', 'wp.ga4.datalayer.scripts'];
+            $ignoredBlocks = ['require.js', 'head.additional', 'transparent_iframe', 'wp.gtm.datalayer.scripts', 'wp.ga4.datalayer.scripts', 'weltpixel_googleconsentmode_state_init'];
             $ignoredBlocksString = $this->speedHelper->moveJsToBottomIgnoredBlocks() ?? '';
             if (strlen(trim($ignoredBlocksString))) {
                 $userIgnoredBlocks = array_map('trim', explode(',', $ignoredBlocksString));
