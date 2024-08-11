@@ -263,6 +263,15 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * @param $storeId
+     * @return mixed
+     */
+    public function disableMobileDoubleClick($storeId = null)
+    {
+        return $this->scopeConfig->getValue('weltpixel_category_page/general/disable_mobile_double_click', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $storeId);
+    }
+
+    /**
      * @param int $storeId
      * @return mixed
      */
