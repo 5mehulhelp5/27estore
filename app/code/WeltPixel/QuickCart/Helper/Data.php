@@ -6,6 +6,7 @@ use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Framework\Pricing\Helper\Data as PriceHelper;
 use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory as SalesRuleCollectionFactory;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -76,6 +77,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         ]
     ];
 
+    /**
+     * @var PriceCurrencyInterface
+     */
+    protected $priceCurrency;
+
 
     /**
      * Data constructor.
@@ -86,6 +92,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param SalesRuleCollectionFactory $salesRuleCollectionFactory
      * @param \Magento\Tax\Model\Config $taxConfig
      * @param \Magento\Checkout\Helper\Data $checkoutHelper
+     * @param PriceCurrencyInterface $priceCurrency
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -94,7 +101,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         PriceHelper $priceHelper,
         SalesRuleCollectionFactory $salesRuleCollectionFactory,
         \Magento\Tax\Model\Config $taxConfig,
-        \Magento\Checkout\Helper\Data $checkoutHelper
+        \Magento\Checkout\Helper\Data $checkoutHelper,
+        PriceCurrencyInterface $priceCurrency
     ) {
         parent::__construct($context);
 
@@ -104,6 +112,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->salesRuleCollectionFactory = $salesRuleCollectionFactory;
         $this->taxConfig = $taxConfig;
         $this->checkoutHelper = $checkoutHelper;
+        $this->priceCurrency =  $priceCurrency;
         $this->_quickcartOptions = $this->scopeConfig->getValue('weltpixel_quick_cart', ScopeInterface::SCOPE_STORE);
     }
 
@@ -415,7 +424,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             }
 
             $minimumOrderAmount = $this->_getFreeShippingMinimumOrderAmount();
-            $freeShippingLimit = $minimumOrderAmount - $subtotal;
+            $freeShippingLimit = $this->priceHelper->currency($minimumOrderAmount, false, false) - $subtotal;
             if ($freeShippingFromCartRuleApplied || $freeShippingLimit <= 0) {
                 $quickCartMessageContent = $this->getQuickCartFreeShippingMessageContent();
             } else {
@@ -448,11 +457,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             }
 
             $minimumOrderAmount = $this->_getFreeShippingMinimumOrderAmount();
-            $freeShippingLimit = $minimumOrderAmount - $subtotal;
+            $freeShippingLimit = $this->priceHelper->currency($minimumOrderAmount, false, false) - $subtotal;
             if ($freeShippingFromCartRuleApplied || $freeShippingLimit <= 0) {
                 $shoppingCartMessageContent = $this->getShoppingCartFreeShippingMessageContent();
             } else {
-                $formattedPrice = $this->priceHelper->currency($freeShippingLimit, true, false);
+                $formattedPrice = $this->priceCurrency->format($freeShippingLimit);
                 $shoppingCartMessageContent = str_replace(['{amount_needed}'], ["<span id='shoppingcart-amount-needed'>" . $formattedPrice . "</span>"], $shoppingCartMessageContent);
             }
         }
@@ -536,6 +545,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getQuickCartQtyType($storeId = null) {
         return $this->scopeConfig->getValue('weltpixel_quick_cart/shopping_cart_content/qty_button_type', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $storeId);
+    }
+
+    /**
+     * @param int $storeId
+     * @return boolean
+     */
+    public function getCartQtyType($storeId = null) {
+        return $this->scopeConfig->getValue('weltpixel_quick_cart/shopping_cart_content/qty_button_type_cart_page', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $storeId);
     }
 
 
@@ -791,6 +808,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             return false;
         }
         return $this->checkoutHelper->formatPrice($discountAmount);
+    }
+
+    /**
+     * @return false|\Magento\Csp\Helper\CspNonceProvider
+     */
+    public function getCspNonceProvider()
+    {
+        if (class_exists(\Magento\Csp\Helper\CspNonceProvider::class)) {
+            return  \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Csp\Helper\CspNonceProvider::class);
+        }
+
+        return false;
     }
 
 }
