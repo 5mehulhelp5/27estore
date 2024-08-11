@@ -13,6 +13,7 @@
                 <remove_breadcrumbs>0</remove_breadcrumbs>
                 <hover_products_animation>0</hover_products_animation>
                 <hover_products_animation_speed>0.5</hover_products_animation_speed>
+                <disable_mobile_double_click>0</disable_mobile_double_click>
             </general>
             <image>
                 <enable_hover_image>0</enable_hover_image>
@@ -53,6 +54,7 @@
                 <radius>22px</radius>
                 <swatch_align>center</swatch_align>
                 <width>22px</width>
+                <apply_to_text_swatches>1</apply_to_text_swatches>
             </swatch_layerednavigation>
             <swatch_productlisting>
                 <font_size>10px</font_size>
@@ -61,6 +63,7 @@
                 <show_on_hover>1</show_on_hover>
                 <swatch_align>center</swatch_align>
                 <width>22px</width>
+                <apply_to_text_swatches>1</apply_to_text_swatches>
             </swatch_productlisting>
             <toolbar>
                 <background_color></background_color>
