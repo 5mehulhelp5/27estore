@@ -21,6 +21,7 @@
     "require": {
         "mage2pro/core": "*",
         "magefan/module-admin-user-guide": "*",
+        "magefan/module-blog": "*",
         "magefan/module-blog-graph-ql": "*",
         "magefan/module-community": "*",
         "magefan/module-wysiwyg-advanced": "*",
