@@ -6,6 +6,10 @@
     $tabletBkp      = $this->getTabletBreakpoint();
     $deskBkp        = $this->getDeskBreakpoint();
     $largeDeskBkp   = $this->getLargeDeskBreakpoint();
+
+    /** @var $wpHelper \WeltPixel\DesignElements\Helper\Data */
+    $wpHelper = $this->helper('WeltPixel\DesignElements\Helper\Data');
+    $cspNonceProvider = $wpHelper->getCspNonceProvider();
 ?>
 <style>
     <?php if($globalCss = trim($page->getCssGlobal() ?? '')):?>
@@ -49,7 +53,7 @@
         }
     ?>
 
-    <script>
+    <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         <?php echo $js; ?>
     </script>
     <?php echo $inlineScripts; ?>
