@@ -5,6 +5,8 @@
 /** @var $block \Magento\Framework\View\Element\Template */
 /** @var $helper \Magento\Search\Helper\Data */
 $helper = $this->helper('Magento\Search\Helper\Data');
+/** @var $wpHelper \WeltPixel\CustomHeader\Helper\Data */
+$wpHelper = $this->helper('WeltPixel\CustomHeader\Helper\Data');
 /** @var $configProvider \WeltPixel\CustomHeader\ViewModel\ConfigProvider */
 $configProvider = $block->getData('configProvider');
 $customHeaderHelper = $this->helper('WeltPixel\CustomHeader\Helper\Data');
@@ -17,6 +19,7 @@ $placeholderText = $customHeaderHelper->getPlaceholderText();
 $customHtml = $customHeaderHelper->getCustomHtml();
 $serachOptionsVersion = $customHeaderHelper->getSerachOptionsVersion();
 $serachOptionsVersionClass = !$serachOptionsVersion ? 'version-1' : 'version-2';
+$cspNonceProvider = $wpHelper->getCspNonceProvider();
 ?>
 
 <div class="wrap">
@@ -79,7 +82,7 @@ $serachOptionsVersionClass = !$serachOptionsVersion ? 'version-1' : 'version-2';
     </div>
 </div>
 
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     require(['jquery'],
         function ($) {
             $(document).ready(function() {
