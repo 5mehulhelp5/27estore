@@ -1,6 +1,11 @@
-<?php $notLoginPage = $this->getCurrentPageRedirectUrl()?>
+<?php
+$notLoginPage = $this->getCurrentPageRedirectUrl();
+/** @var \WeltPixel\SocialLogin\Helper\Data $slHelper */
+$slHelper = $this->helper('WeltPixel\SocialLogin\Helper\Data');
+$cspNonceProvider = $slHelper->getCspNonceProvider();
+?>
 
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     window.skipModules = <?=$this->getSkipModules();?>;
     window.queryParam = '<?=\WeltPixel\SocialLogin\Helper\Data::REFERER_STORE_PARAM_NAME ?>';
     window.isSlGuestCheckoutEnabled = "<?=$this->helper('WeltPixel\SocialLogin\Helper\Data')->isGuestCheckoutEnabled(); ?>";
