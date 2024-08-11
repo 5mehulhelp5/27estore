@@ -2,6 +2,10 @@
 // @codingStandardsIgnoreFile
 
 /** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+
+/** @var \WeltPixel\QuickCart\Helper\Data $_helper */
+$_helper = $this->helper('WeltPixel\QuickCart\Helper\Data');
+$cspNonceProvider = $_helper->getCspNonceProvider();
 ?>
 
 <div data-block="minicart" class="minicart-wrapper quickcart-wrapper minicart-weltpixel">
@@ -38,7 +42,7 @@
             <?php echo $block->getChildHtml('minicart.addons'); ?>
         </div>
     <?php endif ?>
-    <script>
+    <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         window.checkout = <?php /* @escapeNotVerified */ echo json_encode($block->getConfig()); ?>;
     </script>
     <script type="text/x-magento-init">
