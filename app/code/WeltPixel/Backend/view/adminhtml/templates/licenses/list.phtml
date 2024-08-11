@@ -63,9 +63,9 @@ $odd = false;
                         success: function (data) {
                             $(that).prop('disabled', false);
                             if (!data.error) {
-                                formToSubmit.find('.license-key').html(data.license);
+                                formToSubmit.find('.license-key').text(data.license);
                                 formToSubmit.find('.license-validity .license-status').removeClass('license-status-ok license-status-nok').addClass(data.is_valid);
-                                formToSubmit.find('.license-validity .license-status').html(data.is_valid_msg);
+                                formToSubmit.find('.license-validity .license-status').text(data.is_valid_msg);
                                 formToSubmit.find('.license-input').val('');
                             }
                             alert({
