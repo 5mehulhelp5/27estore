@@ -5,7 +5,16 @@
             <label>Quick Cart</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_QuickCart::QuickCartSettings</resource>
-            <group id="notification" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Quick Cart</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_QuickCart</button_label>
+                </field>
+            </group>
+            <group id="notification" translate="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Important / Recommended:</label>
                 <fieldset_css>weltpixel-recommended-header active</fieldset_css>
                 <field id="notification_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -268,11 +277,21 @@
             </group>
             <group id="shopping_cart_content" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Shopping Cart Content Design</label>
-                <field id="qty_button_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="qty_button_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Quantity Button Type</label>
                     <source_model>WeltPixel\QuickCart\Model\Config\Source\QuantitySignTypes</source_model>
                     <comment>
                        Choose Quantity Button design
+                    </comment>
+                    <depends>
+                        <field id="weltpixel_quick_cart/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="qty_button_type_cart_page" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Quantity Button Type On Cart Page</label>
+                    <source_model>WeltPixel\QuickCart\Model\Config\Source\QuantitySignTypes</source_model>
+                    <comment>
+                        Choose Quantity Button design
                     </comment>
                     <depends>
                         <field id="weltpixel_quick_cart/general/enable">1</field>
