@@ -1,9 +1,11 @@
 <?php
 $_helper = $this->helper('WeltPixel\FrontendOptions\Helper\Data');
 $_designeElementsHelper = $this->helper('WeltPixel\DesignElements\Helper\Data');
+$cspNonceProvider = $_designeElementsHelper->getCspNonceProvider();
+
 if ($_designeElementsHelper->isResponsiveHelpersEnabled()) :
 ?>
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
 require(['jquery', 'designelements_base' ],
 function   ($, SEMICOLONBASE) {
     var options = <?php echo $_helper->getBreakPointsJson(); ?>;
@@ -16,7 +18,7 @@ function   ($, SEMICOLONBASE) {
 });
 </script>
 <?php endif; ?>
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     window.Pearl = window.Pearl || {};
     window.Pearl.scrollCollapsibleToTop = <?php echo $_designeElementsHelper->getCollapsibleWidgetTopJump(); ?>;
 </script>
