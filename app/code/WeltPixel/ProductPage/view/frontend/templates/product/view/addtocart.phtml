@@ -30,7 +30,7 @@
                 <button type="submit"
                         title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
                         class="action primary tocart"
-                        id="product-addtocart-button">
+                        id="product-addtocart-button" disabled>
                     <span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span>
                 </button>
                 <?php echo $block->getChildHtml('', true) ?>
@@ -60,6 +60,7 @@
 
             $('#product_addtocart_form').mage('validation', {
                 radioCheckboxClosest: '.nested',
+                addToCartButtonSelector: '.action.tocart',
                 submitHandler: function (form) {
                     var widget = $(form).catalogAddToCart({
                         bindSubmit: false
@@ -70,6 +71,7 @@
                     return false;
                 }
             });
+            $('#product-addtocart-button').removeAttr('disabled');
         });
     </script>
 <?php endif; ?>
