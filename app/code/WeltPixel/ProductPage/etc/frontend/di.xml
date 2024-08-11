@@ -33,4 +33,12 @@
         <plugin name="weltpixel-productpage-block-product-list"
                 type="WeltPixel\ProductPage\Plugin\BlockProductList"  sortOrder="10" />
     </virtualType>
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Radio">
+        <plugin name="weltpixel-productpage-block-product-bundle-option-radio"
+                type="WeltPixel\ProductPage\Plugin\BlockProductBundleOptionRadio" sortOrder="10"/>
+    </type>
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Select">
+        <plugin name="weltpixel-productpage-block-product-bundle-option-select"
+                type="WeltPixel\ProductPage\Plugin\BlockProductBundleOptionSelect" sortOrder="10"/>
+    </type>
 </config>
