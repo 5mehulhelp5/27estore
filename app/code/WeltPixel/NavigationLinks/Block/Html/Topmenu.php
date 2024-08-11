@@ -148,9 +148,15 @@ class Topmenu extends \Magento\Theme\Block\Html\Topmenu
                 $DynamicScOpts = $parent->getWeltpixelMmDynamicScOpts() ?? '';
                 $columnsNumber = $this->_getColumnsNumber($parent);
                 $dynamicSubcategories = (boolean)$parent->getWeltpixelMmDynamicScFlag() && (in_array($parent->getWeltpixelMmDisplayMode(), ['sectioned', 'fullwidth']));
-                $columnGroups = explode(",", $DynamicScOpts);
-                $columnGroups = array_slice($columnGroups, 0, $columnsNumber);
-                $columnGroupsSum = array_sum($columnGroups);
+                $columnGroupsSum = 0;
+                $columnGroups = 0;
+
+                if ($DynamicScOpts) {
+                    $columnGroups = explode(",", $DynamicScOpts);
+                    $columnGroups = array_slice($columnGroups, 0, $columnsNumber);
+                    $columnGroupsSum = array_sum($columnGroups);
+                }
+
                 if ($columnsNumber) {
                     // group items only if the number of subcetegories is bigger than columns numbers value
                     if ($forceBreak || $childrenCount / $columnsNumber < 1) {
