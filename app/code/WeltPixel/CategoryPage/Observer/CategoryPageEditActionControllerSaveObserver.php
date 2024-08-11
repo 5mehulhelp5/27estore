@@ -419,7 +419,20 @@ class CategoryPageEditActionControllerSaveObserver implements ObserverInterface
         $height = $swatchOptions['height'];
         $fontSize = $swatchOptions['font_size'];
         $align = $swatchOptions['swatch_align'];
+        $applyToTextSwatches = (boolean)$swatchOptions['apply_to_text_swatches'];
         $swatchHeight = '0';
+
+        if ($applyToTextSwatches) {
+            $textSwatchesCss = "";
+        } else {
+            $textSwatchesCss = "
+            &.text {
+                border-radius: 0 !important;
+                -moz-border-radius: 0 !important;
+                -webkit-border-radius: 0 !important;
+                width: auto !important;
+            }";
+        }
 
         if ($wrapperClass == '.products-list') {
             $align = 'left';
@@ -501,6 +514,9 @@ class CategoryPageEditActionControllerSaveObserver implements ObserverInterface
             $showOnHover = "
     .product-item {
         .product-item-info {
+            .swatch-attribute {
+                height: auto;
+            }
             .swatch-attribute-options {
                 text-align:  $align !important; // $align
                 .swatch-option {
@@ -661,6 +677,7 @@ $wrapperClass {
         height: $height !important;
         min-width: $width !important;
         margin: 3px !important;
+        $textSwatchesCss
     }
     .swatch-option.text {
         line-height: $lineHeightText !important;
