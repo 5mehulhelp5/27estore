@@ -5,7 +5,16 @@
             <label>Category Page</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_CategoryPage::CategoryPageSettings</resource>
-            <group id="notification" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category Page</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_CategoryPage</button_label>
+                </field>
+            </group>
+            <group id="notification" translate="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Important / Recommended:</label>
                 <fieldset_css>weltpixel-recommended-header active</fieldset_css>
                 <field id="notification_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -69,6 +78,10 @@
                     <depends>
                         <field id="hover_products_animation" separator=",">zoom-item,zoom-image</field>
                     </depends>
+                </field>
+                <field id="disable_mobile_double_click" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable Mobile Double Click</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
             <group id="item" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -205,6 +218,10 @@
                     <label>Swatch Align</label>
                     <source_model>WeltPixel\CategoryPage\Model\Config\Source\TextAlign</source_model>
                     <comment>Set swatch position.</comment>
+                </field>
+                <field id="apply_to_text_swatches" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply the changes also to text swatches</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
             <group id="toolbar" translate="label" type="text" sortOrder="80" showInDefault="1" showInStore="1" showInWebsite="1">
@@ -457,6 +474,10 @@
                     <label>Swatch Align</label>
                     <source_model>WeltPixel\CategoryPage\Model\Config\Source\TextAlign</source_model>
                     <comment>Select swatch position in Layered Navigation.</comment>
+                </field>
+                <field id="apply_to_text_swatches" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply the changes also to text swatches</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
             <group id="description" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
