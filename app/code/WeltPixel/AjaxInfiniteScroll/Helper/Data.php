@@ -355,7 +355,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $prevPageNo = $currentPageNo - 1;
         $pageUrl = $this->removeQueryFromUrl($currentUrl);
         $parseUrl = $this->parseUrl($pageUrl);
-        $parseUrl['query'] = 'p=' . $prevPageNo;
+        if ($prevPageNo != 1) {
+            $parseUrl['query'] = 'p=' . $prevPageNo;
+        }
 
         return $this->buildUrl($parseUrl);
     }

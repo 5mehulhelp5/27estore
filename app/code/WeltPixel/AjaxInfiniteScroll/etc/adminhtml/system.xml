@@ -5,7 +5,16 @@
             <label>Ajax Catalog and Infinite Scroll</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_AjaxInfiniteScroll::AjaxInfiniteScroll</resource>
-            <group id="general" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Ajax Catalog and Infinite Scroll</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_AjaxInfiniteScroll</button_label>
+                </field>
+            </group>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Settings</label>
                 <field id="ajax_catalog" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Ajax Catalog</label>
@@ -45,7 +54,7 @@
                     <comment/>
                 </field>
             </group>
-            <group id="advanced" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="advanced" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Advanced Settings</label>
                 <field id="text_loading" translate="label comment" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>"Loading More Items" Text</label>
