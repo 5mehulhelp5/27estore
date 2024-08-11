@@ -68,4 +68,16 @@ class Fonts extends Template
         return $this->_dataHelper->getLoadGoogleFontAsyncrounously();
     }
 
+    /**
+     * @return false|\Magento\Csp\Helper\CspNonceProvider
+     */
+    public function getCspNonceProvider()
+    {
+        if (class_exists(\Magento\Csp\Helper\CspNonceProvider::class)) {
+            return  \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Csp\Helper\CspNonceProvider::class);
+        }
+
+        return false;
+    }
+
 }
