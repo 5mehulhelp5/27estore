@@ -2,12 +2,13 @@
 <?php
 $megaMenuOverlayFocusEnabled = $_helper->getMegaMenuOverlayOption();
 $designSettingsEnabled = $_helper->isDesignSettingsEnabled();
+$cspNonceProvider = $_helper->getCspNonceProvider();
 ?>
 
 <?php if($megaMenuOverlayFocusEnabled && $designSettingsEnabled) ?>
     <div class="overlay-focus-megamenu"></div>
 <?php ?>
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     window.screenM = '<?php echo $_helper->getMobileThreshold() + 1 ; ?>';
     window.widthThreshold = '<?php echo $_helper->getWidthThreshold() + 1; ?>';
     window.designSettingsEnabled = '<?php echo $_helper->isDesignSettingsEnabled(); ?>';
@@ -26,7 +27,7 @@ $designSettingsEnabled = $_helper->isDesignSettingsEnabled();
                 for (let i = 0; i < addmenurole.length; i++) {
                     $(addmenurole[i]).attr("role","none");
                 }
-                jQuery('.section-items.nav-sections-items').attr('role','none');
+                $('.section-items.nav-sections-items').attr('role','none');
             });
         });
 </script>

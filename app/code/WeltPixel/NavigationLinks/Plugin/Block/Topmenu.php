@@ -322,6 +322,10 @@ class Topmenu
             $result['weltpixel_mm_label_text'] = $categoryMenuData['weltpixel_mm_label_text'];
         }
 
+        if (isset($categoryMenuData['weltpixel_mm_category_text']) && strlen(trim($categoryMenuData['weltpixel_mm_category_text']))) {
+            $result['name'] = trim($categoryMenuData['weltpixel_mm_category_text']);
+        }
+
         $result['weltpixel_mm_label_font_color'] = '';
         if (isset($categoryMenuData['weltpixel_mm_label_font_color'])) {
             $result['weltpixel_mm_label_font_color'] = $categoryMenuData['weltpixel_mm_label_font_color'];
@@ -399,6 +403,7 @@ class Topmenu
 		        'weltpixel_mm_image_name_align',
 		        'weltpixel_mm_image',
                 'weltpixel_mm_label_text',
+                'weltpixel_mm_category_text',
                 'weltpixel_mm_label_font_color',
                 'weltpixel_mm_label_background_color',
                 'weltpixel_mm_label_position',

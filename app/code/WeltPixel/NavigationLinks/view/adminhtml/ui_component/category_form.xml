@@ -93,6 +93,22 @@
                     </item>
                 </argument>
             </field>
+            <field name="weltpixel_sc_show_description">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortOrder" xsi:type="number">36</item>
+                        <item name="label" translate="true" xsi:type="string">Display Category Description</item>
+                        <item name="dataType" xsi:type="string">boolean</item>
+                        <item name="formElement" xsi:type="string">checkbox</item>
+                        <item name="prefer" xsi:type="string">toggle</item>
+                        <item name="valueMap" xsi:type="array">
+                            <item name="true" xsi:type="string">1</item>
+                            <item name="false" xsi:type="string">0</item>
+                        </item>
+                        <item name="default" xsi:type="number">0</item>
+                    </item>
+                </argument>
+            </field>
             <field name="weltpixel_sc_hide">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -576,6 +592,18 @@ Note: Any newly created subcategory will be added to the last column unless you 
                         <item name="notice" xsi:type="string" translate="true">
                             <![CDATA[This setting applies only to Subcategories of the current Category. Is relative to the column the Subcategories are in.]]>
                         </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="weltpixel_mm_category_text">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortOrder" xsi:type="number">185</item>
+                        <item name="dataType" xsi:type="string">string</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                        <item name="label" xsi:type="string" translate="true">Mega Menu Category Text</item>
+                        <item name="notice" xsi:type="string" translate="true">This option enables you to add a custom name for this category instead of the category name.</item>
                     </item>
                 </argument>
             </field>

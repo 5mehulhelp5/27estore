@@ -8,6 +8,7 @@ $subcategoryOptionsAvailable = $block->areSubcategoryOptionsVisible();
                 subCategoryLayout = $('select[name="weltpixel_sc_layout"]'),
                 subCategoryColumnsNr = $('select[name="weltpixel_sc_columns"]'),
                 subCategoryTitlePosition = $('select[name="weltpixel_sc_title_position"]'),
+                subCategoryShowDescription = $('input[name="weltpixel_sc_show_description"]'),
                 subCategoryHide = $('input[name="weltpixel_sc_hide"]'),
                 subCategoryImage = $('input[name="weltpixel_sc_image"]');
 
@@ -27,9 +28,9 @@ $subcategoryOptionsAvailable = $block->areSubcategoryOptionsVisible();
             }
             function updateDynamicColumnsDependencies(element) {
                 if (element.val() == 'default') {
-                    hideDependencies([subCategoryColumnsNr,subCategoryTitlePosition]);
+                    hideDependencies([subCategoryColumnsNr,subCategoryTitlePosition,subCategoryShowDescription]);
                 } else {
-                    showDependencies([subCategoryColumnsNr,subCategoryTitlePosition]);
+                    showDependencies([subCategoryColumnsNr,subCategoryTitlePosition,subCategoryShowDescription]);
                 }
             }
             function hideDependencies(fields)

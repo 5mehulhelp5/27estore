@@ -51,7 +51,7 @@ class Subcategories extends \Magento\Framework\App\Helper\AbstractHelper
         $categoryLevel = $category->getLevel();
 
         $subcategoriesCollection = $this->categoryCollectionFactory->create();
-        $subcategoriesCollection->addFieldToSelect(['name','url','weltpixel_sc_hide', 'weltpixel_sc_image']);
+        $subcategoriesCollection->addFieldToSelect(['name','url','weltpixel_sc_hide', 'weltpixel_sc_image', 'description']);
         $subcategoriesCollection->addAttributeToFilter('is_active', 1);
         $subcategoriesCollection->addAttributeToFilter('path', ['like' => $categoryPath . '%']);
         $subcategoriesCollection->addAttributeToFilter('level', $categoryLevel + 1);
