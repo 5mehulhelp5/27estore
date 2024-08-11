@@ -5,7 +5,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="WeSupply_Toolbox::WeSupply" title="WeSupply" sortOrder="500">
                     <resource id="WeSupply_Toolbox::Toolbox_Label" sortOrder="100" title="Settings">
-                        <resource id="WeSupply_Toolbox::Toolbox" title="Configuration" sortOrder="10" />
+                        <resource id="WeSupply_Toolbox::APISettings" title="Configuration" sortOrder="10" />
                     </resource>
                     <resource id="WeSupply_Toolbox::HelpCenter" sortOrder="200" title="Help Center">
                         <resource id="WeSupply_Toolbox::OrderTrackingNotifications" sortOrder="10" title="Order Tracking &amp; Notifications" />

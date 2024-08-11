@@ -23,7 +23,7 @@
             action="adminhtml/system_config/edit/section/wesupply_api/"
             sortOrder="10"
             parent="WeSupply_Toolbox::Toolbox_Label"
-            resource="WeSupply_Toolbox::Toolbox"
+            resource="WeSupply_Toolbox::APISettings"
         />
         <add
             id="WeSupply_Toolbox::HelpCenter"

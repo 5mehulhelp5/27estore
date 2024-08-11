@@ -26,6 +26,16 @@ $ php bin/magento setup:upgrade
 
 ###Release Notes  
 
+Version 1.12.8, March 18, 2024  
+-Fixed an issue that would prevent the connection between WeSupply and Magento from being made properly on Magento Commerce instances with website restrictions enabled.  
+-Fixed an issue that would prevent product dimensions, such as weight from being imported into WeSupply correctly, when configured in the Toolbox module.  
+-Optimized the image fetch process, ensuring the extension now fetches the Small Image from Magento, as opposed to the Base Image, which is larger.  
+-Fixed an issue that, in some cases, prevented specific attribute types from being exported from Magento for use in WeSupply via Toolbox options.  
+-Fixed a bug related to permissions/ACL that would prevent the extension's settings from being accessed unless the user had an admin role.  
+-Updated Magento Admin comments and setting descriptions around options that require a Domain Alias for increased clarity.  
+-Confirmed compatibility with the latest 2.4.6-p4, 2.4.5-p6 and 2.4.4-p7 versions.  
+
+
 Version 1.12.7, September 6, 2023  
 -New Feature: Improved the logging process to ensure enough debug information is written into the wesupply.log file when an error occurs during the order import/update process.  
 -Fixed an error that would sometimes be thrown when using specific payment methods that capture orders after authorization.  
