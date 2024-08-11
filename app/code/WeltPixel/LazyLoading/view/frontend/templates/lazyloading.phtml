@@ -3,8 +3,9 @@ $_helper = $this->helper('WeltPixel\LazyLoading\Helper\Data');
 $imageLoader = $_helper->getImageLoader();
 $negativeMargin = $_helper->startLoadingEarly() ? $_helper->getNegativeMargin() : 0;
 $effectSpeed = $_helper->startLoadingEarly() ? $_helper->getEffectSpeed() : 0;
+$cspNonceProvider = $_helper->getCspNonceProvider();
 ?>
-<script type="text/javascript">
+<script type="text/javascript" <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     window.wpLazyLoad = window.wpLazyLoad || {};
     window.wpLazyLoad.effect = "fadeIn";
     window.wpLazyLoad.effectspeed = <?php echo $effectSpeed ?>;
