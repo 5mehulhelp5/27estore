@@ -75,7 +75,8 @@ class AssetRenderer
         }
 
         $ignoredPreloadRequestPaths  = [
-            'weltpixel_quickview'
+            'weltpixel_quickview',
+            'checkout',
         ];
 
         if (!$isMagentoCriticalCssEnabled && !$isPreloadNotSupported && $cssPreloadEnabled &&
