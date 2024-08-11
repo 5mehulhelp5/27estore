@@ -1098,18 +1098,22 @@ class OrderInfoBuilder implements OrderInfoBuilderInterface
                         $prodAttrs[$attrCode] = $this->_helper->recursivelyGetArrayData(['base_price'], $item);
                         continue;
                     }
-                    if ($attributeData = $_product->getData($attrCode)) {
+
+                    $productData = $_product->getData();
+                    if (isset($productData[$attrCode])) {
+                        $attributeValue = $_product->getData($attrCode);
                         $attribute = $_product->getResource()->getAttribute($attrCode);
                         if ($attribute->usesSource()) {
-                            $attributeData = $attribute->getSource()->getOptionText($attributeData);
-                            if ($attributeData instanceof Phrase) {
-                                $attributeData = $attributeData->getText();
+                            $attributeValue = $attribute->getSource()->getOptionText($attributeValue);
+                            if ($attributeValue instanceof Phrase) {
+                                $attributeValue = $attributeValue->getText();
                             }
                         }
 
-                        $prodAttrs[$attrCode] = is_array($attributeData) ?
-                            implode(', ', $attributeData) : $attributeData;
+                        $prodAttrs[$attrCode] = is_array($attributeValue) ?
+                            implode(', ', $attributeValue) : $attributeValue;
                     }
+
                 }
             }
         }
@@ -1204,13 +1208,13 @@ class OrderInfoBuilder implements OrderInfoBuilderInterface
         if (isset($productOptions['simple_sku'])) { // first, look for associated simple product image
             $_product = $this->_getProductBySku($productOptions['simple_sku']);
             if (!is_null($_product)) {
-                return  $this->imageHelper->init($_product, 'product_page_main_image')->getUrl();
+                return  $this->imageHelper->init($_product, 'product_base_image')->getUrl();
             }
         }
 
         $_product = $this->_getProductById($item['product_id']);
         if (!is_null($_product)) {
-            return $this->imageHelper->init($_product, 'product_page_main_image')->getUrl();
+            return $this->imageHelper->init($_product, 'product_base_image')->getUrl();
         }
 
         /**
