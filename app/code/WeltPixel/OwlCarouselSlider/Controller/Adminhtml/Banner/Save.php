@@ -197,8 +197,10 @@ class Save extends \WeltPixel\OwlCarouselSlider\Controller\Adminhtml\Banner
             $data['valid_to'] = $localeDate->date($data['valid_to'])
                 ->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i');
 
-            if (is_array($data['slider_id'])) {
+            if (isset($data['slider_id']) && is_array($data['slider_id'])) {
                 $data['slider_id'] = implode(',', $data['slider_id']);
+            } else {
+                $data['slider_id'] = '';
             }
 
             $bannerModel->setData($data);
