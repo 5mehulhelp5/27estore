@@ -1,6 +1,7 @@
 define([
-    'jquery'
-    ], function ($) {
+    'jquery',
+    'underscore',
+    ], function ($, _) {
     "use strict";
 
     var wpProductLabels = {
@@ -14,6 +15,8 @@ define([
                 $("[data-wpproductlabel='1']").each(function() {
                     productIds.push($(this).attr('data-product-id'));
                 });
+
+                productIds = _.uniq(productIds);
 
                 if (productIds.length) {
                     $.ajax({

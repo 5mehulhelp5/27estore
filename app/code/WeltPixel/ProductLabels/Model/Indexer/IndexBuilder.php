@@ -89,7 +89,9 @@ class IndexBuilder
      */
     protected function getAllProductLabels()
     {
-        return $this->productLabelsCollectionFactory->create();
+        $productLabelsCollection = $this->productLabelsCollectionFactory->create();
+        $productLabelsCollection->addFieldToFilter('status', 1);
+        return $productLabelsCollection;
     }
 
     /**
