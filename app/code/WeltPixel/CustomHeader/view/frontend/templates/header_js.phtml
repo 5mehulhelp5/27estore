@@ -1,4 +1,9 @@
-<script>
+<?php
+/** @var $wpHelper \WeltPixel\CustomHeader\Helper\Data */
+$wpHelper = $this->helper('WeltPixel\CustomHeader\Helper\Data');
+$cspNonceProvider = $wpHelper->getCspNonceProvider();
+?>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     require(['jquery', 'WeltPixel_CustomHeader/js/header_js'], function ($, Header) {
         $(document).ready(function () {
             Header.action();
