@@ -44,6 +44,11 @@ class ConditionProduct
         $attrCode = $subject->getAttribute();
 
         if ('quantity_and_stock_status' == $attrCode) {
+            $msiInvetoryStock = $this->registry->registry('weltpixel_msi_inventory_stock');
+            if ($msiInvetoryStock == 'msi_inventory_stock') {
+                $inventoryStockValue =  $this->registry->registry('weltpixel_msi_inventory_stock_value');
+                return (bool)$inventoryStockValue;
+            }
             $isInStockRegistry = $this->registry->registry('weltpixel_productlabels_product_isinstock');
             if (!is_null($isInStockRegistry) && $isInStockRegistry) {
                 $result = $subject->validateAttribute($isInStockRegistry);

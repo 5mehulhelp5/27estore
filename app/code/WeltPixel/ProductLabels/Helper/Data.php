@@ -80,4 +80,16 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return (bool)$this->scopeConfig->getValue('weltpixel_productlabels/general/enable_product_widgets', ScopeInterface::SCOPE_STORE);
     }
+
+    /**
+     * @return false|\Magento\Csp\Helper\CspNonceProvider
+     */
+    public function getCspNonceProvider()
+    {
+        if (class_exists(\Magento\Csp\Helper\CspNonceProvider::class)) {
+            return  \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Csp\Helper\CspNonceProvider::class);
+        }
+
+        return false;
+    }
 }

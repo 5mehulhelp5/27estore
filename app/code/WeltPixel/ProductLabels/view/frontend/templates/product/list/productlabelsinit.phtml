@@ -1,4 +1,9 @@
-<script>
+<?php
+/** @var $wpHelper \WeltPixel\ProductLabels\Helper\Data */
+$wpHelper = $this->helper('WeltPixel\ProductLabels\Helper\Data');
+$cspNonceProvider = $wpHelper->getCspNonceProvider();
+?>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     require(['jquery', 'wpProductLabels'], function($, wpProductLabels){
         $(document).ready(function() {
             var requestUrl = '<?php echo $this->getUrl("wpproductlabels/product/index"); ?>';

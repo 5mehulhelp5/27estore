@@ -27,4 +27,8 @@
     <type name="Magento\CatalogRule\Model\Rule\Condition\Product">
         <plugin name="apply_productlabels_quantity_combination_assign" type="WeltPixel\ProductLabels\Plugin\Indexer\ConditionProduct"/>
     </type>
+    <type name="Magento\InventoryCatalog\Plugin\InventoryApi\SetDataToLegacyCatalogInventoryAtSourceItemsSavePlugin">
+        <plugin name="apply_productlabels_rules_after_product_save_inventory"
+                type="WeltPixel\ProductLabels\Plugin\Indexer\StockItem\Save\ApplyMSIRules"/>
+    </type>
 </config>
