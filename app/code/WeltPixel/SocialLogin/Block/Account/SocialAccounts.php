@@ -8,6 +8,7 @@
 namespace WeltPixel\SocialLogin\Block\Account;
 
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\View\Element\Template;
@@ -37,12 +38,24 @@ class SocialAccounts extends \Magento\Framework\View\Element\Template
      */
     protected $customerAccountManagement;
 
+    /**
+     * @var \Magento\Framework\Math\Random
+     */
+    protected $random;
+
+    /**
+     * @var CustomerRepositoryInterface
+     */
+    protected $customerRepository;
+
     public function __construct(
         Template\Context $context,
         Session $customerSession,
         SocialloginFactory $socialloginFactory,
         Http $response,
         AccountManagementInterface $customerAccountManagement,
+        CustomerRepositoryInterface $customerRepository,
+        \Magento\Framework\Math\Random $random,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -50,6 +63,8 @@ class SocialAccounts extends \Magento\Framework\View\Element\Template
         $this->socialloginFactory = $socialloginFactory;
         $this->response = $response;
         $this->customerAccountManagement = $customerAccountManagement;
+        $this->customerRepository = $customerRepository;
+        $this->random = $random;
     }
 
     /**
@@ -93,7 +108,25 @@ class SocialAccounts extends \Magento\Framework\View\Element\Template
     {
         $customer  = $this->getCustomer();
         $rpToken = $customer->getRpToken();
-        if (!$customer->getPasswordHash() && $this->customerAccountManagement->validateResetPasswordLinkToken((int)$customer->getId(), $rpToken)) {
+        $regenerateToken = false;
+        $resetPasswordTokenIsValid = false;
+
+        if ($rpToken) {
+            try {
+                $resetPasswordTokenIsValid = $this->customerAccountManagement->validateResetPasswordLinkToken((int)$customer->getId(), $rpToken);
+            } catch (\Exception $e) {
+                $resetPasswordTokenIsValid = true;
+                $regenerateToken = true;
+            }
+        }
+
+        if ($regenerateToken) {
+            $newPasswordToken = $this->random->getUniqueHash();
+            $customerApiModel = $this->customerRepository->getById($customer->getId());
+            $this->customerAccountManagement->changeResetPasswordLinkToken($customerApiModel, $newPasswordToken);
+        }
+
+        if (!$customer->getPasswordHash() && $resetPasswordTokenIsValid) {
             return true;
         } else {
             return false;
@@ -110,7 +143,16 @@ class SocialAccounts extends \Magento\Framework\View\Element\Template
         $customerId = $customer->getId();
         $params['id'] = $customerId;
         $params['token'] = $customer->getRpToken();
-        $url  = $this->getUrl('customer/account/createPassword/', $params);
+        try {
+            $url = $this->getUrl('customer/account/createPassword/', $params);
+        } catch (\Exception $e) {
+            $newPasswordToken = $this->random->getUniqueHash();
+            $customerApiModel = $this->customerRepository->getById($customer->getId());
+            $this->customerAccountManagement->changeResetPasswordLinkToken($customerApiModel, $newPasswordToken);
+
+            $params['token'] = $newPasswordToken;
+            $url = $this->getUrl('customer/account/createPassword/', $params);
+        }
 
         return $url;
     }
