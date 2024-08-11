@@ -5,6 +5,23 @@
             <label>Google Analytics Enhanced Ecommerce Pro</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_GoogleTagManager::GoogleTagManagerSettings</resource>
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Google Analytics Enhanced Ecommerce PRO</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_GoogleTagManager</button_label>
+                </field>
+            </group>
+            <group id="module_information" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Important Note</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-gtm-header active</fieldset_css>
+                <field id="important_note" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\GoogleTagManager\Block\Adminhtml\System\Config\ImportantNote</frontend_model>
+                </field>
+            </group>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Configuration</label>
                 <field id="general_notice" translate="button_label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
