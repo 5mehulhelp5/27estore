@@ -2,6 +2,9 @@
 $uniqueid = 'owl-brand-'.uniqid();
 $style = $this->getData('style');
 $images = $this->getImages();
+/** @var $wpHelper \WeltPixel\DesignElements\Helper\Data */
+$wpHelper = $this->helper('WeltPixel\DesignElements\Helper\Data');
+$cspNonceProvider = $wpHelper->getCspNonceProvider();
 ?>
 <?php if(!empty($images)):?>
     <?php if($style != 'carousel'):?>
@@ -16,7 +19,7 @@ $images = $this->getImages();
             <div class="item"><?php echo $image; ?></div>
         <?php endforeach;?>
         </div>
-        <script>
+        <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
             require(['jquery', 'owl_carousel', 'owl_config' ],
                 function ($) {
                     var carouselElement = $('#<?php echo $uniqueid;?>'),
