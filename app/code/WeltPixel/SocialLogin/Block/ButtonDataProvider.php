@@ -96,13 +96,18 @@ class ButtonDataProvider extends \WeltPixel\SocialLogin\Block\SocialLogin
 
     public function _afterToHtml($html)
     {
+        $cspNonceProvider = $this->slHelper->getCspNonceProvider();
+        $nonce = '';
+        if ($cspNonceProvider) {
+            $nonce = ' nonce="' .  $cspNonceProvider->generateNonce() . '" ';
+        }
         $html = $html ?? '';
         if ($this->_content && trim($html)) {
-            $html = '<script type="text/javascript">'
+            $html = '<script type="text/javascript"' . $nonce .  '>'
                 . 'window.' . $this->_content . ' = \'' . str_replace(["\n", 'script'], ['', "scri'+'pt"], $this->escapeJs($html)) . '\';'
                 . '</script>';
         } elseif($this->_content == 'socialloginButtons' && !$html) {
-            $html = '<script type="text/javascript">'
+            $html = '<script type="text/javascript"' . $nonce .  '>'
                 . 'window.' . $this->_content . ' = \'' . str_replace(["\n", 'script'], ['', "scri'+'pt"], $this->escapeJs('')) . '\';'
                 . '</script>';
         }
