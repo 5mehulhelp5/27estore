@@ -2,6 +2,7 @@
 $currentProduct = $block->getProduct();
 $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
 $_helper = $this->helper('WeltPixel\DesignElements\Helper\Data');
+$cspNonceProvider = $_helper->getCspNonceProvider();
 $productImg = $_imagehelper->init($currentProduct, 'product_thumbnail_image')->getUrl();
 $productImgAlt = $_helper->getAltImage($currentProduct, 'thumbnail');
 $pricingHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
@@ -74,7 +75,7 @@ switch ($bttDisplayOption) {
     }
 </style>
 
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     require(['jquery','btt_button'],
         function ($, SEMICOLONBTTBUTTON) {
             var options = '<?php echo $options ?>';
@@ -82,4 +83,4 @@ switch ($bttDisplayOption) {
                 SEMICOLONBTTBUTTON.widget.init(options)
             );
         });
-</script>
+</style>
