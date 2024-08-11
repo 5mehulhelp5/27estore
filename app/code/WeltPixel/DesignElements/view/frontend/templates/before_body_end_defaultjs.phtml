@@ -1,4 +1,9 @@
-<script>
+<?php
+/** @var $wpHelper \WeltPixel\DesignElements\Helper\Data */
+$wpHelper = $this->helper('WeltPixel\DesignElements\Helper\Data');
+$cspNonceProvider = $wpHelper->getCspNonceProvider();
+?>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
 require(['jquery', 'designelements_default' ],
 function   ($, SEMICOLONDEFAULT) {
     $(document).ready( SEMICOLONDEFAULT.widget.init() );
