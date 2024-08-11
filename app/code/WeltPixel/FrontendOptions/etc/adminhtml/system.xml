@@ -5,14 +5,23 @@
             <label>Frontend Options</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_FrontendOptions::FrontendOptionsSettings</resource>
-            <group id="notification" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Frontend Options</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_FrontendOptions</button_label>
+                </field>
+            </group>
+            <group id="notification" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Important / Recommended:</label>
                 <fieldset_css>weltpixel-recommended-header active</fieldset_css>
                 <field id="notification_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <frontend_model>WeltPixel\FrontendOptions\Block\Adminhtml\System\Config\Notification</frontend_model>
                 </field>
             </group>
-            <group id="breakpoints" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="breakpoints" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Breakpoints</label>
                 <field id="screen__xxs" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Screen xxs</label>
