@@ -408,6 +408,7 @@ return [
         'WeltPixel_EnhancedEmail' => 1,
         'WeltPixel_LazyLoading' => 1,
         'WeltPixel_FullPageScroll' => 1,
+        'WeltPixel_GA4' => 1,
         'WeltPixel_GoogleCards' => 1,
         'WeltPixel_GoogleTagManager' => 1,
         'WeltPixel_InstagramWidget' => 1,
