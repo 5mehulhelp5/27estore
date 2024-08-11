@@ -2,6 +2,7 @@
 
 namespace WeltPixel\GoogleCards\Block;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Review\Model\ResourceModel\Review\CollectionFactory;
 use WeltPixel\GoogleCards\Model\Config\FileUploader\FileProcessor as ImageFileProcessor;
 
@@ -19,7 +20,8 @@ class FacebookOpenGraph extends GoogleCards
      * @param \WeltPixel\GoogleCards\Helper\Data $helper
      * @param \Magento\Review\Model\Review\SummaryFactory $reviewSummaryFactory
      * @param CollectionFactory $_reviewsFactory
-     * @param \Magento\Theme\Block\Html\Header\Logo $logo
+     * @param \Magento\Theme\Block\Html\Header\Logo $logo,
+     * @param ProductRepositoryInterface $productRepository,
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
@@ -30,11 +32,12 @@ class FacebookOpenGraph extends GoogleCards
         \Magento\Review\Model\Review\SummaryFactory $reviewSummaryFactory,
         \Magento\Review\Model\ResourceModel\Review\CollectionFactory $_reviewsFactory,
         \Magento\Theme\Block\Html\Header\Logo $logo,
+        ProductRepositoryInterface $productRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     ) {
         $this->imageFileProcessor = $imageFileProcessor;
-        parent::__construct($productContext, $helper, $reviewSummaryFactory, $_reviewsFactory, $logo, $context, $data);
+        parent::__construct($productContext, $helper, $reviewSummaryFactory, $_reviewsFactory, $logo, $productRepository, $context, $data);
     }
 
     /**
