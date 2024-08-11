@@ -5,8 +5,9 @@
 
 /** @var \WeltPixel\Quickview\Helper\Data $_helper */
 $_helper = $this->helper('WeltPixel\Quickview\Helper\Data');
+$cspNonceProvider = $_helper->getCspNonceProvider();
 ?>
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     requirejs(['jquery', 'weltpixel_quickview' ],
         function   ($, quickview) {
             $(document).ready(function() {
