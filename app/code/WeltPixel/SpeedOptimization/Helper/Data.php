@@ -193,4 +193,16 @@ class Data extends AbstractHelper
         }
         return $this->_optimizationOptions['reqiurejs_bundle_generation']['optimization_method'];
     }
+
+    /**
+     * @return false|\Magento\Csp\Helper\CspNonceProvider
+     */
+    public function getCspNonceProvider()
+    {
+        if (class_exists(\Magento\Csp\Helper\CspNonceProvider::class)) {
+            return  \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Csp\Helper\CspNonceProvider::class);
+        }
+
+        return false;
+    }
 }
