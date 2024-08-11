@@ -5,6 +5,15 @@
             <label>Enhanced Newsletter Popup PRO</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_Newsletter::NewsletterSettings</resource>
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Enhanced Newsletter Popup PRO</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_Newsletter</button_label>
+                </field>
+            </group>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -214,9 +223,9 @@
                     </depends>
                 </field>
                 <field id="popup_enable_gtm_tracking" translate="label comment" type="select" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1" >
-                    <label>Enable Google Tag Manager Tracking</label>
+                    <label>Enable Google Analytics Tracking</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[<b>Hint:</b> Requires Installation and Enable of <a href="https://www.weltpixel.com/google-analytics-enhanced-ecommerce-tag-manager-magento-2.html" target="_blank" >Google Analytics Enhanced Ecommerce PRO Extension</a>. This feature will allow you to track event impressions and event success signup. ]]></comment>
+                    <comment><![CDATA[<b>Hint:</b> Requires Installation and Enable of <a href="https://www.weltpixel.com/google-analytics-4-ga4-with-gtm-support-for-magento-2.html" target="_blank" >Google Analytics 4 (GA4) With GTM Support Extension</a>. This feature will allow you to track event impressions and event success signup.  ]]></comment>
                     <depends>
                         <field id="enable">1</field>
                     </depends>
@@ -356,9 +365,9 @@
                     </depends>
                 </field>
                 <field id="exitintent_enable_gtm_tracking" translate="label comment" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1" >
-                    <label>Enable Google Tag Manager Tracking</label>
+                    <label>Enable Google Analytics Tracking</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[<b>Hint:</b> Requires Installation and Enable of <a href="https://www.weltpixel.com/google-analytics-enhanced-ecommerce-tag-manager-magento-2.html" target="_blank" >Google Analytics Enhanced Ecommerce PRO Extension</a>. This feature will allow you to track event impressions and event success signup. ]]></comment>
+                    <comment><![CDATA[<b>Hint:</b> Requires Installation and Enable of <a href="https://www.weltpixel.com/google-analytics-4-ga4-with-gtm-support-for-magento-2.html" target="_blank" >Google Analytics 4 (GA4) With GTM Support Extension</a>. This feature will allow you to track event impressions and event success signup.  ]]></comment>
                     <depends>
                         <field id="enable_exitintent">1</field>
                     </depends>
