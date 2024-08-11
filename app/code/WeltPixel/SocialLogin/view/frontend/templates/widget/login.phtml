@@ -3,6 +3,10 @@
 <?php $buttonsCount = count($buttons)?>
 <?php $style = $buttonsCount > $this->getLimit() ? 'display: none' : 'display: block';
 $actionStyle = $buttonsCount > $this->getLimit() ? 'display: block' : 'display: none';
+
+/** @var \WeltPixel\SocialLogin\Helper\Data $slHelper */
+$slHelper = $this->helper('WeltPixel\SocialLogin\Helper\Data');
+$cspNonceProvider = $slHelper->getCspNonceProvider();
 ?>
 
 
@@ -99,7 +103,7 @@ $actionStyle = $buttonsCount > $this->getLimit() ? 'display: block' : 'display: 
             </div>
         </div>
     </div>
-    <script>
+    <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         if (window.socialloginButtons) {
             window.emailFormUrl = "<?=$this->getEmailFormUrl()?>";
             window.twitterOauthUrl = "<?=$this->getTwitterOauthUrl()?>";
