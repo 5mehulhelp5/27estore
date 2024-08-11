@@ -3,16 +3,20 @@
 // @codingStandardsIgnoreFile
 
 /** @var \Magento\Customer\Block\Account\AuthenticationPopup $block */
+
+/** @var \WeltPixel\SocialLogin\Helper\Data $slHelper */
+$slHelper = $this->helper('WeltPixel\SocialLogin\Helper\Data');
+$cspNonceProvider = $slHelper->getCspNonceProvider();
 ?>
 
 <div id="ajaxlogin-popup" data-bind="scope:'ajaxLogin'" style="display: none;">
-    <script>
+    <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         window.ajaxLogin = <?= /* @noEscape */ $block->getSerializedConfig() ?>;
         window.popupStyle = "<?= /* @noEscape */  $this->helper('WeltPixel\SocialLogin\Helper\Data')->getPopupStyle() ?>";
         window.isEnabled = <?= /* @noEscape */  $this->helper('WeltPixel\SocialLogin\Helper\Data')->isEnabled() ?>;
     </script>
     <!-- ko template: getTemplate() --><!-- /ko -->
-    <script type="text/x-magento-init">
+    <script type="text/x-magento-init" <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         {
             "#ajaxlogin-popup": {
                 "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
