@@ -8,7 +8,7 @@ $wpCanonicalUrlEnabled = (bool)$_product->getData('wp_enable_canonical_url');
 $wpCanonicalUrl = $_product->getData('wp_canonical_url') ?? '';
 $productUrl = $_product->getUrlInStore();
 if ($wpCanonicalUrlEnabled) {
-    $productUrl = $wpCanonicalUrl = $_product->getData('wp_canonical_url');
+    $productUrl = $wpCanonicalUrl;
     $urlOptions = parse_url($wpCanonicalUrl);
     if (!isset($urlOptions['scheme'])) {
         $productUrl = $block->getBaseUrl() . $wpCanonicalUrl;

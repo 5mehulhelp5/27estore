@@ -4,6 +4,7 @@ namespace WeltPixel\GoogleCards\Block;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Review\Model\ResourceModel\Review\CollectionFactory;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 
 class GoogleCards extends \Magento\Framework\View\Element\Template
 {
@@ -50,6 +51,11 @@ class GoogleCards extends \Magento\Framework\View\Element\Template
     protected $_reviewsCollection;
 
     /**
+     * @var ProductRepositoryInterface
+     */
+    protected $_productRepository;
+
+    /**
      * Custom logo path
      */
     const CUSTOM_LOGO_PATH = 'weltpixel/google_logo';
@@ -61,6 +67,7 @@ class GoogleCards extends \Magento\Framework\View\Element\Template
      * @param \Magento\Review\Model\Review\SummaryFactory $reviewSummaryFactory
      * @param CollectionFactory $_reviewsFactory
      * @param \Magento\Theme\Block\Html\Header\Logo $logo
+     * @param ProductRepositoryInterface $productRepository
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
@@ -70,6 +77,7 @@ class GoogleCards extends \Magento\Framework\View\Element\Template
         \Magento\Review\Model\Review\SummaryFactory $reviewSummaryFactory,
         \Magento\Review\Model\ResourceModel\Review\CollectionFactory $_reviewsFactory,
         \Magento\Theme\Block\Html\Header\Logo $logo,
+        ProductRepositoryInterface $productRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     )
@@ -79,6 +87,7 @@ class GoogleCards extends \Magento\Framework\View\Element\Template
         $this->_reviewSummaryFactory = $reviewSummaryFactory;
         $this->_reviewsFactory = $_reviewsFactory;
         $this->_logo = $logo;
+        $this->_productRepository = $productRepository;
         $this->_imageBuilder = $productContext->getImageBuilder();
         parent::__construct($context, $data);
     }
@@ -503,15 +512,23 @@ class GoogleCards extends \Magento\Framework\View\Element\Template
     public function getProductAvailability($product, $shortVersion = false)
     {
 
-        $inStockValue = ($shortVersion) ? "instock" : "https://schema.org/InStock";
-        $outOfStockValue = ($shortVersion) ? "outofstock" : "https://schema.org/OutOfStock";
+        $inStockValue = ($shortVersion) ? "in stock" : "https://schema.org/InStock";
+        $outOfStockValue = ($shortVersion) ? "out of stock" : "https://schema.org/OutOfStock";
 
         $productAvailability = $outOfStockValue;
         if ($product->isAvailable()) {
             $productAvailability = $inStockValue;
         }
 
+        if ($product->getTypeId() == \Magento\ConfigurableProduct\Model\Product\Type\Configurable::TYPE_CODE) {
+           return $productAvailability;
+        }
+
         $productStockItem = $product->getExtensionAttributes()->getStockItem();
+        if (!$productStockItem) {
+            $product = $this->_productRepository->getById($product->getId());
+            $productStockItem = $product->getExtensionAttributes()->getStockItem();
+        }
         $backOrdersStatus = $productStockItem->getBackorders();
 
         if ($backOrdersStatus != \Magento\CatalogInventory\Model\Stock::BACKORDERS_NO) {

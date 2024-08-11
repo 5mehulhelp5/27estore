@@ -3,6 +3,7 @@
 namespace WeltPixel\GoogleCards\Block\Configurable;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 
 class GoogleCards extends \WeltPixel\GoogleCards\Block\GoogleCards
 {
@@ -13,6 +14,7 @@ class GoogleCards extends \WeltPixel\GoogleCards\Block\GoogleCards
      * @param \Magento\Review\Model\Review\SummaryFactory $reviewSummaryFactory
      * @param CollectionFactory $_reviewsFactory
      * @param \Magento\Theme\Block\Html\Header\Logo $logo
+     * @param ProductRepositoryInterface $productRepository
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
@@ -22,10 +24,11 @@ class GoogleCards extends \WeltPixel\GoogleCards\Block\GoogleCards
         \Magento\Review\Model\Review\SummaryFactory $reviewSummaryFactory,
         \Magento\Review\Model\ResourceModel\Review\CollectionFactory $_reviewsFactory,
         \Magento\Theme\Block\Html\Header\Logo $logo,
+        ProductRepositoryInterface $productRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     ) {
-        parent::__construct($productContext, $helper, $reviewSummaryFactory, $_reviewsFactory, $logo, $context, $data);
+        parent::__construct($productContext, $helper, $reviewSummaryFactory, $_reviewsFactory, $logo, $productRepository, $context, $data);
     }
 
     /**
