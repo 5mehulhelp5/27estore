@@ -341,10 +341,68 @@ class ProductPageEditActionControllerSaveObserver implements ObserverInterface
         $height = $swatchOptions['height'];
         $lineHeight = $swatchOptions['line_height'];
         $fontSize = $swatchOptions['font_size'];
+        $applyToTextSwatches = (boolean)$swatchOptions['apply_to_text_swatches'];
 
         $hWidth = (int)$width + 6 . 'px';
         $hHeight = (int)$height + 6 . 'px';
         $icon_content = '\e116';
+
+        if ($applyToTextSwatches) {
+            $textSwatchesCss = "&.text {
+	                line-height: $lineHeight;
+	                padding: 0;
+	                font-size: $fontSize;
+	                margin-right: 15px;
+		            &:before {
+		                visibility: hidden;
+		                position: absolute;
+		                top: -3px;
+		                left: -3px;
+		                z-index: 0;
+		                width: $hWidth;
+		                height: $hHeight;
+		                border: 1px solid transparent !important;
+		                border-radius: $radius !important;
+		                -moz-border-radius: $radius !important;
+		                -webkit-border-radius: $radius !important;
+		                content: '';
+		                -webkit-box-sizing: border-box;
+					    -moz-box-sizing: border-box;
+					    box-sizing: border-box;
+					    transition: all .15s ease-in
+		            }
+		            &:hover {
+		                position: relative;
+		                overflow: visible;
+		                &:before {
+		                    visibility: visible;
+		                    border: 1px solid #999999 !important;
+		                }
+		            }
+		            &.selected {
+		                position: relative;
+		                overflow: visible;
+		                &:before {
+		                    visibility: visible;
+		                    border: 1px solid #999999 !important;
+		                }
+		            }
+	            }";
+        } else {
+            $textSwatchesCss = "&.text {
+                width: auto;
+                border-radius: 0;
+                -moz-border-radius: 0;
+                -webkit-border-radius: 0;
+                border: 1px solid #ffffff !important;
+                &:not(.disabled) {
+                    &:hover {
+                        border: 1px solid #ffffff !important;
+                        outline: 1px solid #999999 !important;
+                    }
+                }
+            }";
+        }
 
         $content = "
         .theme-pearl.catalog-product-view {
@@ -513,46 +571,7 @@ class ProductPageEditActionControllerSaveObserver implements ObserverInterface
 		                }
 		            }
 	            }
-	            &.text {
-	                line-height: $lineHeight;
-	                padding: 0;
-	                font-size: $fontSize;
-	                margin-right: 15px;
-		            &:before {
-		                visibility: hidden;
-		                position: absolute;
-		                top: -3px;
-		                left: -3px;
-		                z-index: 0;
-		                width: $hWidth;
-		                height: $hHeight;
-		                border: 1px solid transparent !important;
-		                border-radius: $radius !important;
-		                -moz-border-radius: $radius !important;
-		                -webkit-border-radius: $radius !important;
-		                content: '';
-		                -webkit-box-sizing: border-box;
-					    -moz-box-sizing: border-box;
-					    box-sizing: border-box;
-					    transition: all .15s ease-in
-		            }
-		            &:hover {
-		                position: relative;
-		                overflow: visible;
-		                &:before {
-		                    visibility: visible;
-		                    border: 1px solid #999999 !important;
-		                }
-		            }
-		            &.selected {
-		                position: relative;
-		                overflow: visible;
-		                &:before {
-		                    visibility: visible;
-		                    border: 1px solid #999999 !important;
-		                }
-		            }
-	            }
+	            $textSwatchesCss
             }
             .swatch-option[data-option-tooltip-value='#fff'],
             .swatch-option[data-option-tooltip-value='#ffffff'],
