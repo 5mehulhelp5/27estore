@@ -555,6 +555,38 @@
         margin-left: 10px;
         text-transform: none;
     }
+
+    .control-qty-plus-minus {
+        .qty-update-plus-minus {
+            padding: 0 5px 0;
+            float: none;
+            font-size: 14px;
+            cursor: pointer;
+            &.item-minus {
+                margin-left: 5px;
+                font-family: 'luma-icons';
+                &:after {
+                    content: '\2212';
+                }
+                &.arrow-input {
+                    &:after {
+                        content: '\e617';
+                    }
+                }
+            }
+            &.item-plus {
+                font-family: 'luma-icons';
+                &:after {
+                    content: '\002B';
+                }
+                &.arrow-input {
+                    &:after {
+                        content: '\e608'
+                    }
+                }
+            }
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
