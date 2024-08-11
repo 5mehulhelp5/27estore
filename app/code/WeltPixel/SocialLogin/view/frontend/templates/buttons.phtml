@@ -1,7 +1,12 @@
 <?php $buttons = $this->getButtons()?>
 <?php $buttonsCount = count($buttons)?>
 <?php $notLoginPage = $this->getCurrentPageRedirectUrl()?>
-<?php $cartPageAccordionState = $this->accordionStateOnCart()?>
+<?php
+$cartPageAccordionState = $this->accordionStateOnCart();
+/** @var \WeltPixel\SocialLogin\Helper\Data $slHelper */
+$slHelper = $this->helper('WeltPixel\SocialLogin\Helper\Data');
+$cspNonceProvider = $slHelper->getCspNonceProvider();
+?>
 <?php if(!empty($buttons) && !$this->isCustomerLoggedIn()):?>
     <div class="sociallogin-wrapper block-customer-login login-container">
         <div class="block sociallogin-block">
@@ -25,7 +30,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         if (window.socialloginButtons) {
             window.emailFormUrl = "<?=$this->getEmailFormUrl()?>";
             window.twitterOauthUrl = "<?=$this->getTwitterOauthUrl()?>";
