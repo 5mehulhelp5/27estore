@@ -8,6 +8,9 @@ define(['jquery', 'domReady'], function ($) {
                 var msie = ua.indexOf("MSIE ");
                 var that = this;
 
+                $('.control-qty-plus-minus').on('click', '.qty-update-plus-minus', function () {
+                    quickcart.updateCartQty($(this));
+                });
                 $('.quickcart-content-wrapper').on('click', '.qty-update', function () {
                     quickcart.updateQty($(this));
                 });
@@ -107,6 +110,20 @@ define(['jquery', 'domReady'], function ($) {
                         break;
                     default:
                         return true;
+                }
+            },
+            updateCartQty: function (el) {
+                var qtyContainer = el.closest('.details-qty'),
+                    currentQty = parseFloat(qtyContainer.find('input').val());
+
+                if (el.hasClass('item-plus')) {
+                    var newQty = currentQty + 1;
+                    qtyContainer.find('input').val(newQty);
+                } else {
+                    if (currentQty > 1) {
+                        var newQty = parseFloat(currentQty) - 1;
+                        qtyContainer.find('input').val(newQty);
+                    }
                 }
             },
             updateQty: function (el) {
