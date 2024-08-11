@@ -66,11 +66,12 @@ class View
      */
     public function afterExecute(Action $subject, $page)
     {
+        if ($this->_wpHelper->isEnabled()) {
+            $this->_wpHelper->updateSliderBodyClass();
+        }
         if(!$this->_wpHelper->isAjaxEnabled() || !$this->_wpHelper->isEnabled()) {
             return $page;
         }
-
-        $this->_wpHelper->updateSliderBodyClass();
 
         $response = $page;
         if ($response instanceof Page) {
