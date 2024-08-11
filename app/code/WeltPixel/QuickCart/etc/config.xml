@@ -35,6 +35,7 @@
                 <custom_css></custom_css>
             </shoppingcart_message>
             <shopping_cart_content>
+                <qty_button_type_cart_page>default</qty_button_type_cart_page>
                 <discount_display_mode_enable>1</discount_display_mode_enable>
                 <discount_display_mode>inline</discount_display_mode>
                 <enable_coupon_codes>0</enable_coupon_codes>
