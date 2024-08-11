@@ -7,6 +7,10 @@
 // @codingStandardsIgnoreFile
 
 /** @var \Magento\Customer\Block\Form\Login $block */
+
+/** @var \WeltPixel\SocialLogin\Helper\Data $slHelper */
+$slHelper = $this->helper('WeltPixel\SocialLogin\Helper\Data');
+$cspNonceProvider = $slHelper->getCspNonceProvider();
 ?>
 <div class="block block-customer-login" id="popup-modal" style="display:none">
     <div class="block-title">
@@ -43,6 +47,6 @@
     </div>
 </div>
 
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
         require(['popupLogin'], function(){});
 </script>
