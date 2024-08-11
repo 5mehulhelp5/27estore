@@ -228,4 +228,16 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return $this->scopeConfig->getValue('weltpixel_frontend_options/google_font_options/asyn_webfont_load', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $storeId) ?? '';
     }
+
+    /**
+     * @return false|\Magento\Csp\Helper\CspNonceProvider
+     */
+    public function getCspNonceProvider()
+    {
+        if (class_exists(\Magento\Csp\Helper\CspNonceProvider::class)) {
+            return  \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Csp\Helper\CspNonceProvider::class);
+        }
+
+        return false;
+    }
 }
