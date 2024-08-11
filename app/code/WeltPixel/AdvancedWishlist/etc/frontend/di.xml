@@ -20,6 +20,10 @@
         <plugin name="weltpixel-advancedwishlist-wishlist"
                 type="WeltPixel\AdvancedWishlist\Plugin\WishlistModel" sortOrder="1" />
     </type>
+    <type name="Magento\Wishlist\Model\Item">
+        <plugin name="weltpixel-advancedwishlist-wishlist-item"
+                type="WeltPixel\AdvancedWishlist\Plugin\WishlistItemModel" sortOrder="1" />
+    </type>
     <type name="WeltPixel\AdvancedWishlist\CustomerData\Wishlist">
         <arguments>
             <argument name="wishlistHelper" xsi:type="object">WeltPixel\AdvancedWishlist\Helper\WishlistData</argument>

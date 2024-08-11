@@ -5,6 +5,15 @@
             <label>Advanced Wishlist Pro</label>
             <tab>weltpixel</tab>
             <resource>WeltPixel_AdvancedWishlist::AdvancedWishlistSettings</resource>
+            <group id="general_module_information" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Multiple Ajax Wishlist PRO</label>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>weltpixel-module-information-header active</fieldset_css>
+                <field id="separator_product_dimensions" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\ModuleInformation</frontend_model>
+                    <button_label>WeltPixel_AdvancedWishlist</button_label>
+                </field>
+            </group>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Advanced Wishlist General Settings</label>
                 <field id="enable_multiwishlist" translate="label comment" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -16,6 +25,10 @@
                     <label>Enable Ajax Wishlist</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Enable/Disable Ajax Wishlist.</comment>
+                </field>
+                <field id="keep_in_wishlist_after_addtocart" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Item In Wishlist After Adding To cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="disable_default_share" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Disable Default Share Wishlist Button</label>

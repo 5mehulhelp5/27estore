@@ -50,6 +50,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * @return boolean
+     */
+    public function keepItemInWishlistAfterAddToCart()
+    {
+        return $this->_wishlistOptions['general']['keep_in_wishlist_after_addtocart'] ?? '';
+    }
+
+    /**
      * @return string
      */
     public function getShareJavascript() {

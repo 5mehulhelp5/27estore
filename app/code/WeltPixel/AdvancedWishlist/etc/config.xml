@@ -10,6 +10,7 @@
                 <enable_publicwishlist>0</enable_publicwishlist>
                 <enable_pricealert>0</enable_pricealert>
                 <pricealert_frequency>0 */5 * * *</pricealert_frequency>
+                <keep_in_wishlist_after_addtocart>0</keep_in_wishlist_after_addtocart>
             </general>
         </weltpixel_advancedwishlist>
     </default>
