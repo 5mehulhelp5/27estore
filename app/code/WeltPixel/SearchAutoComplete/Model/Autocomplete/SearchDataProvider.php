@@ -234,7 +234,7 @@ class SearchDataProvider implements DataProviderInterface
                     'final_price' => $this->priceCurrency->format($product->getPriceInfo()->getPrice('final_price')->getAmount()->getValue(), false),
                     'has_special_price' => $product->getSpecialPrice() > 0 ? true : false,
                     'image' => $image,
-                    'description' => strip_tags($this->_outputHelper->productAttribute($product, $product->getDescription(), 'description' )),
+                    'description' => strip_tags($this->_outputHelper->productAttribute($product, $product->getDescription() ?? '', 'description' )),
                     'url' => $product->getProductUrl(),
                 ]);
                 $items[] = $resultItem;
