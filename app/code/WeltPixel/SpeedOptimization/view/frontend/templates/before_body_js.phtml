@@ -2,9 +2,10 @@
 // @codingStandardsIgnoreFile
 /** @var \WeltPixel\SpeedOptimization\Helper\Data $_speedOptimizationHelper */
 $_speedOptimizationHelper = $this->helper('WeltPixel\SpeedOptimization\Helper\Data');
+$cspNonceProvider = $_speedOptimizationHelper->getCspNonceProvider();
 ?>
 <?php if (!$_speedOptimizationHelper->isMagentoCriticalCssEnabled() && $_speedOptimizationHelper->isCssPreloadEnabled() ) : ?>
-<script>
+<script <?php if ($cspNonceProvider) echo ' nonce="' .  $cspNonceProvider->generateNonce() . '" ' ?>>
     /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
     /* This file is meant as a standalone workflow for
     - testing support for link[rel=preload]
