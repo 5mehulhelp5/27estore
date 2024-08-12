@@ -10,14 +10,13 @@ define([
       cache: true,
       dataType: 'html',
       showLoader: false
-    }).success(function (data) {
+    }).done(function (data) {
       htmlContainer.append(data);
       htmlContainer.find('img.lazy').each(function(i, img) {
         jQuery(img).attr('src', jQuery(img).attr('data-original'));
-      })
-    }).done(function () {
+      });
       loaderSelector.remove();
-    })
+    });
   }
 
   return function (config) {
