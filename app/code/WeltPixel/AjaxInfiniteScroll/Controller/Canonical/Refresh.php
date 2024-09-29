@@ -60,13 +60,27 @@ class Refresh extends \Magento\Framework\App\Action\Action
         $isAjax = false;
         $responseData = [];
         $params = $this->getRequest()->getParams();
-        $currentUrl = $params['current_url'];
 
         if (isset($params['is_ajax']) && $params['is_ajax']) {
             $isAjax = true;
         }
 
         if ($isAjax) {
+			# 2024-09-29 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			# 1) «Undefined array key "current_url"
+			# in app/code/WeltPixel/AjaxInfiniteScroll/Controller/Canonical/Refresh.php on line 63»:
+			# https://github.com/27estore/site/issues/62
+			# 2)
+			#	$.ajax({
+			#		<…>
+			#		url: window.ajaxCanonicalRefresh,
+			#		<…>
+			#		data: {
+			#			is_ajax: 1,
+			#			current_url: window.location.href
+			#		},
+			# https://github.com/27estore/site/blob/2024-09-29/app/code/WeltPixel/AjaxInfiniteScroll/view/frontend/web/js/ajaxinfinitescroll.js#L491-L498
+			$currentUrl = $params['current_url'];
             $currentPageNo = $this->_iasHelper->getCurrentPageNo($currentUrl);
             $prevPageUrl = $this->_iasHelper->getPrevPageUrl($currentPageNo, $currentUrl);
             $nextPageUrl = $this->_iasHelper->getNextPageUrl($currentPageNo, $currentUrl);
