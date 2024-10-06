@@ -402,7 +402,13 @@ class Gd2 extends AbstractAdapter
         if (IMAGETYPE_GIF === $fileType || IMAGETYPE_PNG === $fileType) {
             // check for specific transparent color
             $transparentIndex = imagecolortransparent($imageResource);
-            if ($transparentIndex >= 0) {
+			#  2024-10-07
+			# 1) "«imagecolorsforindex(): Argument #2 ($color) is out of range» for some GIF images":
+			# https://github.com/27estore/site/issues/67
+			# 2) "How did I fix «imagecolorsforindex(): Argument #2 ($color) is out of range» for GIF images in Magento < 2.4.7?"
+			# https://mage2.pro/t/6487
+			# 3) https://github.com/magento/magento2/blob/2.4.7-p2/lib/internal/Magento/Framework/Image/Adapter/Gd2.php#L395-L395
+            if ($transparentIndex >= 0 && $transparentIndex < imagecolorstotal($imageResource)) {
                 return $transparentIndex;
             } elseif (IMAGETYPE_PNG === $fileType) {
                 // assume that truecolor PNG has transparency
