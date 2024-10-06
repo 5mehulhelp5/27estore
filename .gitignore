@@ -28,6 +28,11 @@
 # 1) "How to fix «Unable to apply data patch Magento\Theme\Setup\Patch\Data\RegisterThemes for module Magento_Theme»
 # in Magento ≥ 2.3.5 in Windows?" https://mage2.pro/t/6177
 # 2) "Adapt the website to Windows": https://github.com/27estore/site/issues/2
+#  2024-10-07
+# 1) "«imagecolorsforindex(): Argument #2 ($color) is out of range» for some GIF images":
+# https://github.com/27estore/site/issues/67
+# 2) "How did I fix «imagecolorsforindex(): Argument #2 ($color) is out of range» for GIF images in Magento < 2.4.7?"
+# https://mage2.pro/t/6487
 !/vendor/magento/framework/Image/Adapter/Gd2.php
 # 2024-07-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # 1) "How to fix «file_put_contents(generated/metadata/primary|global|plugin-list.php):
