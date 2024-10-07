@@ -19,6 +19,10 @@ use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Controller\Adminhtml\Product\Initialization\Helper as InitializationHelper;
+# 2024-10-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "`Webkul_SampleProduct`: «The image doesn't exist» on saving a product in the backend":
+# https://github.com/27estore/site/issues/68
+use Magento\Swatches\Helper\Data as hSwatches;
 
 class CatalogProductSaveAfter implements ObserverInterface
 {
@@ -284,17 +288,24 @@ class CatalogProductSaveAfter implements ObserverInterface
                 $sampleProduct->setStockData(['qty' => $qty, 'is_in_stock' => 1]);
                 $sampleProduct->setQuantityAndStockStatus(['qty' => $qty, 'is_in_stock' => 1]);
                 $sampleProduct->save();
-
-                $mediaPath =  $this->filesystem
-                                   ->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)
-                                   ->getAbsolutePath();
-                $importDir = $mediaPath.'catalog/product';
-                if ($sampleProduct->getImage()) {
-                    $img_url = $importDir.$sampleProduct->getImage()??'';
-                    $result1 = rtrim($img_url, ".temp");
-                    $sampleProduct->addImageToMediaGallery($result1, ['image', 'small_image', 'thumbnail']);
-                    $sampleProduct->save();
-                }
+				/**
+				 * 2024-10-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+				 * 1) "`Webkul_SampleProduct`: «The image doesn't exist» on saving a product in the backend":
+				 * https://github.com/27estore/site/issues/68
+				 * 2) @see \Magento\Catalog\Model\Product\Gallery\CreateHandler::processMediaAttribute():
+				 * 			$newValue = 'no_selection';
+				 * https://github.com/magento/magento2/blob/2.4.6-p4/app/code/Magento/Catalog/Model/Product/Gallery/CreateHandler.php#L545
+				 */
+				if (($i = $sampleProduct->getImage()) && hSwatches::EMPTY_IMAGE_VALUE !== $i) {
+					$mediaPath =  $this->filesystem
+									   ->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)
+									   ->getAbsolutePath();
+					$importDir = $mediaPath.'catalog/product';
+					$img_url = $importDir . $i;
+					$result1 = rtrim($img_url, ".temp");
+					$sampleProduct->addImageToMediaGallery($result1, ['image', 'small_image', 'thumbnail']);
+					$sampleProduct->save();
+				}
                 $sampleProductId = $sampleProduct->getEntityId();
                 $sampleId = '';
                 $collection = $this->_sampleProductFactory->create()
